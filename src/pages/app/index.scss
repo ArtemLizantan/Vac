@@ -1,0 +1,16 @@
+.class {
+  font-family: "Gilroy";
+}
+.text {
+  font-family: "Gilroy";
+  font-weight: 800;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main {
+  flex: 1 1 auto;
+}

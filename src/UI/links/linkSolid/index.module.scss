@@ -1,0 +1,40 @@
+.link {
+  width: var(--width);
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 2px;
+  background: var(--primary---accent);
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14.364px; /* 89.775% */
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  color: var(--primary---white);
+
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--hover---primary);
+  }
+  @media (max-width: 768px) {
+    width: var(--widthM);
+  }
+  @media (max-width: 425px) {
+    width: var(--widthS);
+    height: 35px;
+    font-size: 14px;
+  }
+}
+.linkDisable {
+  background: rgba(#7481ff, 0.5);
+  cursor: default;
+  &:hover {
+    background: rgba(#7481ff, 0.5);
+  }
+}
