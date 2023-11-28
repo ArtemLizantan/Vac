@@ -1,0 +1,112 @@
+.make {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  &__title {
+    color: #41456b;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14.364px; /* 89.775% */
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.type {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+
+  &__list-item-check {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: #41456b;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 159%;
+  }
+  &__list-item-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5px;
+    span {
+      color: #41456b;
+      font-family: Gilroy;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 159%;
+    }
+    img {
+      width: 34px;
+      height: 15.622px;
+    }
+  }
+}
+
+.transmission {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+
+  &__list-item-check {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: #41456b;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 159%; /* 25.44px */
+  }
+  &__list-item-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5px;
+    span {
+      color: var(--primary-content, #41456b);
+      font-family: Gilroy;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 14.364px;
+    }
+    img {
+      width: 34px;
+      height: 15.622px;
+    }
+  }
+}
+
+.price {
+  &__counts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: #41456b;
+      font-family: Gilroy;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25px; /* 125% */
+    }
+  }
+}
