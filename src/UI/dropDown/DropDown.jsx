@@ -2,18 +2,30 @@ import React, { useState } from "react";
 
 import styles from "./index.module.scss";
 
-const DropDown = ({ title, width, children, id }) => {
+const DropDown = ({
+  title,
+  width,
+  children,
+  id,
+  gap,
+  position,
+  onClick,
+  top,
+  left,
+  borderLeft,
+  borderRight,
+  widthPopup,
+  borderBottom,
+}) => {
   const [active, setActive] = useState(false);
+  const handleTitleClick = () => {
+    onClick && setActive((prev) => !prev);
+  };
 
   return (
-    <div
-      style={{ maxWidth: width }}
-      onClick={() => setActive(true)}
-      className={styles.dropdown}
-      id={id}
-    >
+    <div style={{ maxWidth: width }} className={styles.dropdown} id={id}>
       <div className={`${styles.body} ${active ? styles.active : ""}`}>
-        <div className={styles.top}>
+        <div onClick={() => setActive((prev) => !prev)} className={styles.top}>
           <h4 className={styles.title}>{title}</h4>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +43,22 @@ const DropDown = ({ title, width, children, id }) => {
             />
           </svg>
         </div>
-        <div className={`${styles.bottom} ${active ? styles.active : ""}`}>
+        <div
+          style={{
+            gap: gap,
+            position: position,
+            top: top,
+            left: left,
+            width: widthPopup,
+            background: "#ffff",
+            zIndex: 1000,
+            borderLeft: borderLeft,
+            borderRight: borderRight,
+            borderBottom: borderBottom,
+          }}
+          className={`${styles.bottom} ${active ? styles.active : ""}`}
+          onClick={handleTitleClick}
+        >
           {children}
         </div>
       </div>

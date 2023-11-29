@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const FilterSearch = ({ width, share, placeholder }) => {
+const filterCars = (searchText, listOfCars) => {
+  if (!searchText) {
+    return listOfCars;
+  }
+
+  return listOfCars.filter(({ name }) => {
+    return name.toLowerCase().includes(searchText.toLowerCase());
+  });
+};
+
+export const FilterSearch = ({ width, placeholder, data, position, top }) => {
+  const [carList, setCarList] = useState(data);
+  const [searchItem, setSearchItem] = useState("");
+  const [activeFilterCars, setActiveFilterCars] = useState(false);
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredCards = filterCars(searchItem, data);
+      setCarList(filteredCards);
+    }, 300);
+    return () => clearTimeout(Debounce);
+  }, [searchItem]);
+
   return (
     <form className="filter__search">
       <div style={{ maxWidth: width }} className="filter__search-wrapper">
@@ -8,6 +30,10 @@ export const FilterSearch = ({ width, share, placeholder }) => {
           type="text"
           placeholder={placeholder}
           className="filter__input"
+          onChange={(e) => setSearchItem(e.target.value)}
+          onFocus={() => setActiveFilterCars(true)}
+          onBlur={() => setActiveFilterCars(false)}
+          autoComplete="off"
         />
         <button className="filter__search-btn">
           <svg
@@ -25,33 +51,21 @@ export const FilterSearch = ({ width, share, placeholder }) => {
             />
           </svg>
         </button>
-      </div>
-      {share && (
-        <button className="filter__share-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
+        {activeFilterCars && (
+          <div
+            style={{ position: position, top: top }}
+            className="filter__search-popup"
           >
-            <path
-              d="M11 1H4C2.34315 1 1 2.34315 1 4V20C1 21.6569 2.34315 23 4 23H20C21.6569 23 23 21.6569 23 20V13"
-              stroke="#41456B"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15.5 1H22.5M22.5 1V8.5M22.5 1L12.5 11"
-              stroke="#41456B"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-      )}
+            <ul className="filter__search-list">
+              {carList.map(({ name }) => (
+                <li>
+                  <button>{name}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </form>
   );
 };
