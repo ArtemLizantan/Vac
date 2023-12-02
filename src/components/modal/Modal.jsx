@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -56,8 +56,8 @@ const Modal = ({ state, onClick }) => {
         <div className="close" onClick={onClick}>
           <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M1.41879 24.5858C0.637746 25.3669 0.637746 26.6332 1.41879 27.4143C2.19984 28.1953 3.46617 28.1953 4.24722 27.4143L14.4188 17.2427L24.7533 27.5772C25.5344 28.3582 26.8007 28.3582 27.5817 27.5772C28.3628 26.7962 28.3628 25.5298 27.5817 24.7488L17.2472 14.4143L27.5817 4.07974C28.3628 3.29869 28.3628 2.03236 27.5817 1.25131C26.8007 0.470265 25.5344 0.470265 24.7533 1.25131L14.4188 11.5858L4.24722 1.41425C3.46617 0.633204 2.19984 0.633204 1.41879 1.41425C0.637745 2.1953 0.637746 3.46163 1.41879 4.24268L11.5904 14.4143L1.41879 24.5858Z"
               fill="#41456B"
             />
@@ -132,13 +132,13 @@ const Modal = ({ state, onClick }) => {
       <div className="contactUs">
         <div className="contactUs__close" onClick={closeContactUs}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" strokeLinejoin="round" />
             <path
               d="M23 1L0.999999 23"
               stroke="#41456B"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
@@ -196,9 +196,9 @@ const Modal = ({ state, onClick }) => {
                 <path
                   d="M8 12.7143L14.4778 16.6803C14.7983 16.8765 15.2017 16.8765 15.5222 16.6803L22 12.7143M8 12.7143V21C8 21.5523 8.44772 22 9 22H21C21.5523 22 22 21.5523 22 21V12.7143M8 12.7143L14.4414 8.3762C14.7791 8.14878 15.2209 8.14878 15.5586 8.3762L22 12.7143"
                   stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </a>
@@ -213,13 +213,13 @@ const Modal = ({ state, onClick }) => {
       <div className="success">
         <div className="success__close" onClick={closeContactUs}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" strokeLinejoin="round" />
             <path
               d="M23 1L0.999999 23"
               stroke="#41456B"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
@@ -229,9 +229,9 @@ const Modal = ({ state, onClick }) => {
             <path
               d="M21 37.2925L32.3077 47.6L50.4 21"
               stroke="#7481FF"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>

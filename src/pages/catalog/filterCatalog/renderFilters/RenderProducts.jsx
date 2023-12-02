@@ -1,10 +1,9 @@
 import React from "react";
-import { inventory } from "../../../../data/inventory";
 import { FilterProducts } from "../filterProducts/FilterProducts";
-export const RenderProducts = () => {
+export const RenderProducts = ({ data, setData }) => {
   return (
     <>
-      {inventory.map(
+      {data.map(
         ({
           name,
           model,
@@ -14,8 +13,10 @@ export const RenderProducts = () => {
           transmission,
           kilometres,
           price,
+          id
         }) => (
           <FilterProducts
+            key={id}
             name={name}
             model={model}
             type={bodyType}

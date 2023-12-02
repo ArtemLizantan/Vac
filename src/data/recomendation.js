@@ -12,7 +12,7 @@ export const recomendations = [
     name: "Highest prices",
   },
   {
-    id: "recommendations ",
+    id: "recommendations",
     name: "Recommendations ",
   },
 ];

@@ -5,10 +5,11 @@ import { Price } from "../filterComponents/price/Price";
 import { BodyType } from "./../filterComponents/bodyType/BodyType";
 import { Kilometres } from "./../filterComponents/kilometres/Kilometres";
 import { Make } from "./../filterComponents/make/Make";
-import { Transmission } from "./../filterComponents/transmission/Transmission";
+
+import { Transmission } from "../filterComponents/transmission/Transmission";
 import { Year } from "./../filterComponents/year/Year";
 import "./index.scss";
-export const RenderFilters = () => {
+export const RenderFilters = ({ cards, setCards }) => {
   const mainFilters = [
     {
       id: "makeModel",
@@ -23,7 +24,7 @@ export const RenderFilters = () => {
       name: "Body type",
       child: {
         key: "bodyType",
-        content: <BodyType />,
+        content: <BodyType cards={cards} setCards={setCards} />,
       },
     },
     {
@@ -31,7 +32,7 @@ export const RenderFilters = () => {
       name: "Transmission",
       child: {
         key: "transmission",
-        content: <Transmission />,
+        content: <Transmission cards={cards} setCards={setCards} />,
       },
     },
     {
@@ -39,7 +40,7 @@ export const RenderFilters = () => {
       name: "Price",
       child: {
         key: "price",
-        content: <Price />,
+        content: <Price cards={cards} setCards={setCards} />,
       },
     },
     {
@@ -47,7 +48,7 @@ export const RenderFilters = () => {
       name: "Year",
       child: {
         key: "year",
-        content: <Year />,
+        content: <Year cards={cards} setCards={setCards} />,
       },
     },
     {
@@ -55,7 +56,7 @@ export const RenderFilters = () => {
       name: "Kilometres ",
       child: {
         key: "kilometres",
-        content: <Kilometres />,
+        content: <Kilometres cards={cards} setCards={setCards}/>,
       },
     },
   ];

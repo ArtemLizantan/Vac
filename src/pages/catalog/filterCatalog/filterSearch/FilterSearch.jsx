@@ -5,23 +5,26 @@ const filterCars = (searchText, listOfCars) => {
     return listOfCars;
   }
 
-  return listOfCars.filter(({ name }) => {
-    return name.toLowerCase().includes(searchText.toLowerCase());
-  });
+  return listOfCars.filter(({ name }) =>
+    name.toLowerCase().includes(searchText.toLowerCase())
+  );
 };
 
-export const FilterSearch = ({ width, placeholder, data, position, top }) => {
+export const FilterSearch = ({ width, placeholder, data }) => {
   const [carList, setCarList] = useState(data);
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
 
   useEffect(() => {
-    const Debounce = setTimeout(() => {
-      const filteredCards = filterCars(searchItem, data);
-      setCarList(filteredCards);
+    const debounce = setTimeout(() => {
+      const filteredCars = filterCars(searchItem, data);
+      setCarList(filteredCars);
     }, 300);
-    return () => clearTimeout(Debounce);
-  }, [searchItem]);
+    return () => clearTimeout(debounce);
+  }, [searchItem, data]);
+
+  const handleFocus = () => setActiveFilterCars(true);
+  const handleBlur = () => setActiveFilterCars(false);
 
   return (
     <form className="filter__search">
@@ -31,8 +34,8 @@ export const FilterSearch = ({ width, placeholder, data, position, top }) => {
           placeholder={placeholder}
           className="filter__input"
           onChange={(e) => setSearchItem(e.target.value)}
-          onFocus={() => setActiveFilterCars(true)}
-          onBlur={() => setActiveFilterCars(false)}
+          onFocus={handleFocus}
+          // onBlur={handleBlur}
           autoComplete="off"
         />
         <button className="filter__search-btn">
@@ -52,13 +55,10 @@ export const FilterSearch = ({ width, placeholder, data, position, top }) => {
           </svg>
         </button>
         {activeFilterCars && (
-          <div
-            style={{ position: position, top: top }}
-            className="filter__search-popup"
-          >
+          <div className="filter__search-popup">
             <ul className="filter__search-list">
-              {carList.map(({ name }) => (
-                <li>
+              {carList.map(({ name, id }) => (
+                <li key={id}>
                   <button>{name}</button>
                 </li>
               ))}

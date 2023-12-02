@@ -4,7 +4,12 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 const MainPage = lazy(() => import("../main"));
 
+import Article1 from "./../article1/index";
+import Blog from "./../blog/index";
+import CalculatorPage from "./../calculator/index";
 import { Catalog } from "./../catalog/Catalog";
+import Privacy from "./../privacy/index";
+import Terms from "./../terms/index";
 import "./index.scss";
 
 const App = () => {
@@ -20,6 +25,21 @@ const App = () => {
               </Route>
               <Route exact path="/catalog">
                 <Catalog />
+              </Route>
+              <Route exact path="/blog">
+                <Blog />
+              </Route>
+              <Route exact path="/calculator">
+                <CalculatorPage />
+              </Route>
+              <Route exact path="/privacy">
+                <Privacy />
+              </Route>
+              <Route exact path="/terms">
+                <Terms />
+              </Route>
+              <Route exact path="/article1">
+                <Article1 />
               </Route>
             </Switch>
           </main>

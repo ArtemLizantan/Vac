@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export const Price = () => {
-  const [value, setValue] = useState([0, 100000]);
-
+export const Price = ({ cards, setCards }) => {
+  const [value, setValue] = useState([0, 200000]);
+  const [originalCards, setOriginalCards] = useState(cards);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -13,6 +13,15 @@ export const Price = () => {
     return `$${value.toLocaleString()}`;
   };
 
+  useEffect(() => {
+    const [minPrice, maxPrice] = value;
+    setCards(
+      originalCards.filter(
+        (card) => card.price >= minPrice && card.price <= maxPrice
+      )
+    );
+  }, [value]);
+
   return (
     <Box sx={{ width: 260 }}>
       <div className="price__counts">
@@ -20,12 +29,11 @@ export const Price = () => {
         <span>{dollarValue(value[1])}</span>
       </div>
       <Slider
-        getAriaLabel={() => "Price range"}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
-        max={100000} // Set the maximum value to 1000
-        step={1}
+        max={200000} // Set the maximum value to 1000
+        step={10000}
         sx={{
           color: "#7481FF",
           "&.MuiSlider-rail": {

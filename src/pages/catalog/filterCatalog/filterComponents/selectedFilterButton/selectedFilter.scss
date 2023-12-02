@@ -1,0 +1,26 @@
+.selected-filter {
+  border-radius: 2px;
+  background: rgba(116, 129, 255, 0.2);
+  display: inline-block;
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 10px;
+  }
+  &__name {
+    color: #41456b;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 14.364px;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+  }
+  &__close {
+    border: none;
+    background: unset;
+    cursor: pointer;
+  }
+}

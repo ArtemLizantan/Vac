@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export const Kilometres = () => {
+export const Kilometres = ({ cards, setCards }) => {
   const [value, setValue] = useState([0]);
-
+  const [originalCards, setOriginalCards] = useState(cards);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -12,6 +12,12 @@ export const Kilometres = () => {
   const kmValue = (value) => {
     return `${value.toLocaleString()} or less`;
   };
+
+  useEffect(() => {
+    value[0] === 0
+      ? setCards(originalCards)
+      : setCards(originalCards.filter((card) => card.kilometres <= value[0]));
+  }, [value, originalCards, setCards]);
 
   return (
     <Box sx={{ width: 260 }}>
@@ -22,11 +28,10 @@ export const Kilometres = () => {
       <Slider
         value={value}
         onChange={handleChange}
-        aria-label="Default"
         valueLabelDisplay="auto"
         max={500000}
         min={0}
-        step={100000}
+        step={10000}
         sx={{
           color: "#7481FF",
           "&.MuiSlider-rail": {
