@@ -12,7 +12,7 @@ const Logo = ({ theme }) => {
       <div className="logo__img">
         <img src={theme == 'light' ? logo : logoWhite} alt="logo" />
       </div>
-      VAC
+      Car Masters
     </Link>
   );
 };

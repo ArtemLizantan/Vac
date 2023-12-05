@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { FilterProvider } from "../../context/FilterContenxt";
 import { FilterCatalog } from "./filterCatalog/FilterCatalog";
 export const Catalog = () => {
   return (
@@ -7,7 +8,9 @@ export const Catalog = () => {
       <Helmet>
         <title>Catalog page - VAC</title>
       </Helmet>
-      <FilterCatalog />
+      <FilterProvider>
+        <FilterCatalog />
+      </FilterProvider>
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Checkbox from "react-custom-checkbox";
 import { FiCheck } from "react-icons/fi";
 import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
+
 export const transmission = [
   {
     id: "automatic",
@@ -16,6 +17,10 @@ export const transmission = [
 ];
 
 export const Transmission = ({ cards, setCards }) => {
+
+
+  const { transmissionFilters, setTransmissionFilters } = useFilters();
+
   const [transmissionsState, setTransmissionsState] = useState(transmission);
 
   const [originalCards, setOriginalCards] = useState(cards);
@@ -26,7 +31,7 @@ export const Transmission = ({ cards, setCards }) => {
         ? { ...transmission, value: !transmission.value }
         : transmission
     );
-    setTransmissionsState(updatedTransmissions);
+    setTransmissionFilters(updatedTransmissions);
 
     const selectedTransmissions = updatedTransmissions
       .filter(({ value }) => value)
