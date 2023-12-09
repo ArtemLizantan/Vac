@@ -11,6 +11,7 @@
     gap: 20px;
     width: 100%;
     position: relative;
+    max-width: 860px;
   }
   &__top {
     display: flex;
@@ -44,6 +45,7 @@
     background: #fff;
     position: relative;
     width: 100%;
+    max-width: 350px;
     input {
       border: none;
       padding: 12px 20px;
@@ -74,6 +76,13 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+  }
+  &__search-nothing {
+    color: #41456b;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 14.364px; 
   }
   &__search-popup {
     background-color: #fff;

@@ -1,26 +1,18 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useEffect, useState } from "react";
-
-export const Price = ({ cards, setCards }) => {
+import React, { useState } from "react";
+import { useFilters } from "../../../../../context/FilterContenxt";
+export const Price = () => {
   const [value, setValue] = useState([0, 200000]);
-  const [originalCards, setOriginalCards] = useState(cards);
+  const { setPriceFilters } = useFilters();
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setPriceFilters(newValue);
   };
 
   const dollarValue = (value) => {
     return `$${value.toLocaleString()}`;
   };
-
-  useEffect(() => {
-    const [minPrice, maxPrice] = value;
-    setCards(
-      originalCards.filter(
-        (card) => card.price >= minPrice && card.price <= maxPrice
-      )
-    );
-  }, [value]);
 
   return (
     <Box sx={{ width: 260 }}>

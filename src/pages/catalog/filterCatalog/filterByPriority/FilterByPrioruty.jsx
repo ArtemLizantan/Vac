@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { DropDownFilterItems } from "../../../../UI/dropDown/dropDownFilterItems/dropDownFilterItems";
+import { useFilters } from "../../../../context/FilterContenxt";
 import DropDown from "./../../../../UI/dropDown/DropDown";
 import { recomendations } from "./../../../../data/recomendation";
-export const FilterByPriority = ({ cards, setCards }) => {
+export const FilterByPriority = () => {
   const [selectedValue, setSelectedValue] = useState(recomendations[0].name);
   const [dropDownTitle, setDropDownTitle] = useState("Recommendations");
+
+  const { setFilteredPriority } = useFilters();
 
   const handleItemButtonClick = (value) => {
     setSelectedValue(value);
@@ -16,34 +19,7 @@ export const FilterByPriority = ({ cards, setCards }) => {
   );
 
   const handleSort = (id) => {
-    let sortedCards;
-
-    switch (id) {
-      case "highest":
-        sortedCards = [...cards].sort(
-          (a, b) => parseInt(b.price) - parseInt(a.price)
-        );
-        break;
-      case "lowest":
-        sortedCards = [...cards].sort(
-          (a, b) => parseInt(a.price) - parseInt(b.price)
-        );
-        break;
-      case "newest":
-        sortedCards = [...cards].sort(
-          (a, b) => parseInt(b.year) - parseInt(a.year)
-        );
-        break;
-      case "recommendations":
-        sortedCards = [...cards].sort(
-          (a, b) => parseInt(a.kilometres) - parseInt(b.kilometres)
-        );
-        break;
-      default:
-        sortedCards = [...cards];
-    }
-
-    setCards(sortedCards);
+    setFilteredPriority(id);
   };
 
   return (

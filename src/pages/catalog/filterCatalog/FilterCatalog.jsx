@@ -19,7 +19,7 @@ export const FilterCatalog = () => {
               <button className="filter-sidebar__clear">Clear filters</button>
             </div>
             <ul className="filter-sidebar__list">
-              <RenderFilters cards={cards} setCards={setCards} />
+              <RenderFilters />
             </ul>
           </div>
           <div className="filter__wrapper">
@@ -32,11 +32,11 @@ export const FilterCatalog = () => {
                   data={cards}
                 />
               </div>
-              <FilterByPriority cards={cards} setCards={setCards} />
+              <FilterByPriority  />
             </div>
             <div className="filter__bottom">
               <div className="filter__products">
-                <RenderProducts data={cards} />
+                <RenderProducts  />
               </div>
             </div>
           </div>

@@ -81,7 +81,7 @@ const Footer = () => {
                 />
               </svg>
             </div>
-            <div className="footer__copyright">©Copyright, 2020. Vehicle Approval</div>
+            <div className="footer__copyright">©Copyright, 2020. Car Masters</div>
           </div>
         </div>
       </div>

@@ -8,8 +8,8 @@ const filterCarsSearch = (searchText, listOfCars) => {
 
   const uniqueNames = new Set();
 
-  return listOfCars.filter(({ name }) => {
-    const lowerCaseName = name.toLowerCase();
+  return listOfCars.filter(({ model }) => {
+    const lowerCaseName = model.toLowerCase();
 
     if (
       lowerCaseName.includes(searchText.toLowerCase()) &&
@@ -23,12 +23,12 @@ const filterCarsSearch = (searchText, listOfCars) => {
   });
 };
 
-export const SearchMake = ({ data }) => {
+export const SearchModel = ({ data }) => {
   const [carList, setCarList] = useState(data);
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
-  const [make, setMake] = useState([]);
-  const { setMakeFiltered } = useFilters();
+  const [model, setModel] = useState([]);
+  const { setModelFiltered, makeFiltered, filteredProducts } = useFilters();
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -42,14 +42,13 @@ export const SearchMake = ({ data }) => {
   const handleBlur = () => setActiveFilterCars(false);
 
   const handleItemButtonClick = (value) => {
-    setMakeFiltered(value);
-    setMake(value);
-    console.log(value);
+    setModelFiltered(value);
+    setModel(value);
   };
 
   const handleDeleteSelect = () => {
-    setMakeFiltered("");
-    setMake([]);
+    setModelFiltered("");
+    setModel([]);
   };
 
   return (
@@ -69,30 +68,32 @@ export const SearchMake = ({ data }) => {
           {activeFilterCars && (
             <div className="filter__search-popup filter__search-popup--infilter">
               <ul className="filter__search-list">
-                {carList.map(({ name, id }) => (
-                  <li key={id}>
-                    <button
-                      onClick={() => {
-                        handleItemButtonClick(name);
-                        handleBlur();
-                      }}
-                    >
-                      {name}
-                    </button>
-                  </li>
-                ))}
+                {makeFiltered.length === 0
+                  ? "Select the car name"
+                  : filteredProducts.map(({ model, id }) => (
+                      <li key={id}>
+                        <button
+                          onClick={() => {
+                            handleItemButtonClick(model);
+                            handleBlur();
+                          }}
+                        >
+                          {model}
+                        </button>
+                      </li>
+                    ))}
               </ul>
             </div>
           )}
         </div>
       </form>
-      {make.length === 0 ? null : (
+      {model.length === 0 ? null : (
         <ul style={{ marginTop: "0" }} className="selected-filters">
           <li>
             <SelectedFilterButton
               marginTop={0}
               onClick={() => handleDeleteSelect()}
-              name={make}
+              name={model}
             />
           </li>
         </ul>

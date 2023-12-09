@@ -40,7 +40,7 @@ const Header = ({ inventory }) => {
                     Inventory
                   </LinkLiner>
                 </div>
-                <LinkSolid to={'/quiz'} wx={200} wm={178} ws={130}>
+                <LinkSolid to={'/'} wx={200} wm={178} ws={130}>
                   Request a car
                 </LinkSolid>
               </div>

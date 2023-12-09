@@ -1,23 +1,19 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useState, useEffect } from "react";
-
-export const Kilometres = ({ cards, setCards }) => {
+import React, { useState } from "react";
+import { useFilters } from "../../../../../context/FilterContenxt";
+export const Kilometres = () => {
   const [value, setValue] = useState([0]);
-  const [originalCards, setOriginalCards] = useState(cards);
+  const { setKilometresFilters } = useFilters();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setKilometresFilters(newValue);
   };
 
   const kmValue = (value) => {
     return `${value.toLocaleString()} or less`;
   };
-
-  useEffect(() => {
-    value[0] === 0
-      ? setCards(originalCards)
-      : setCards(originalCards.filter((card) => card.kilometres <= value[0]));
-  }, [value, originalCards, setCards]);
 
   return (
     <Box sx={{ width: 260 }}>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Checkbox from "react-custom-checkbox";
 import { FiCheck } from "react-icons/fi";
+import { useFilters } from "../../../../../context/FilterContenxt";
 import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
-
 export const transmission = [
   {
     id: "automatic",
@@ -16,14 +16,9 @@ export const transmission = [
   },
 ];
 
-export const Transmission = ({ cards, setCards }) => {
-
-
-  const { transmissionFilters, setTransmissionFilters } = useFilters();
-
+export const Transmission = () => {
   const [transmissionsState, setTransmissionsState] = useState(transmission);
-
-  const [originalCards, setOriginalCards] = useState(cards);
+  const { products, setProducts, setTransmissionFilter } = useFilters();
 
   const handleCheckboxChange = (name) => {
     const updatedTransmissions = transmissionsState.map((transmission) =>
@@ -31,20 +26,13 @@ export const Transmission = ({ cards, setCards }) => {
         ? { ...transmission, value: !transmission.value }
         : transmission
     );
-    setTransmissionFilters(updatedTransmissions);
+    setTransmissionsState(updatedTransmissions);
 
     const selectedTransmissions = updatedTransmissions
       .filter(({ value }) => value)
       .map(({ name }) => name);
 
-    if (selectedTransmissions.length === 0) {
-      setCards(originalCards);
-    } else {
-      const sortedCards = originalCards.filter((item) =>
-        selectedTransmissions.includes(item.transmission)
-      );
-      setCards(sortedCards);
-    }
+    setTransmissionFilter(selectedTransmissions);
   };
 
   return (
@@ -70,7 +58,7 @@ export const Transmission = ({ cards, setCards }) => {
           ))}
         </ul>
         <ul className="selected-filters">
-          {transmissionsState.map(({ name, value ,id}) =>
+          {transmissionsState.map(({ name, value, id }) =>
             value ? (
               <li key={`selected-filter-${id}`}>
                 <SelectedFilterButton

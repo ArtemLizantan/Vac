@@ -9,7 +9,7 @@ import { Make } from "./../filterComponents/make/Make";
 import { Transmission } from "../filterComponents/transmission/Transmission";
 import { Year } from "./../filterComponents/year/Year";
 import "./index.scss";
-export const RenderFilters = ({ cards, setCards }) => {
+export const RenderFilters = () => {
   const mainFilters = [
     {
       id: "makeModel",
@@ -24,7 +24,7 @@ export const RenderFilters = ({ cards, setCards }) => {
       name: "Body type",
       child: {
         key: "bodyType",
-        content: <BodyType cards={cards} setCards={setCards} />,
+        content: <BodyType />,
       },
     },
     {
@@ -32,7 +32,7 @@ export const RenderFilters = ({ cards, setCards }) => {
       name: "Transmission",
       child: {
         key: "transmission",
-        content: <Transmission cards={cards} setCards={setCards} />,
+        content: <Transmission />,
       },
     },
     {
@@ -40,7 +40,7 @@ export const RenderFilters = ({ cards, setCards }) => {
       name: "Price",
       child: {
         key: "price",
-        content: <Price cards={cards} setCards={setCards} />,
+        content: <Price />,
       },
     },
     {
@@ -48,7 +48,7 @@ export const RenderFilters = ({ cards, setCards }) => {
       name: "Year",
       child: {
         key: "year",
-        content: <Year cards={cards} setCards={setCards} />,
+        content: <Year />,
       },
     },
     {
@@ -56,14 +56,14 @@ export const RenderFilters = ({ cards, setCards }) => {
       name: "Kilometres ",
       child: {
         key: "kilometres",
-        content: <Kilometres cards={cards} setCards={setCards}/>,
+        content: <Kilometres />,
       },
     },
   ];
 
   return (
     <>
-      {mainFilters.map(({ id, name, child: { key, content } }) => {
+      {mainFilters.map(({ id, name, child: { content } }) => {
         return (
           <DropDown title={name} id={id} key={id}>
             <DropDownFilterItems content={content} />

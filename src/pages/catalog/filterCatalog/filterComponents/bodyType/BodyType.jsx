@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "react-custom-checkbox";
 import { FiCheck } from "react-icons/fi";
+import { useFilters } from "../../../../../context/FilterContenxt";
 import sedan from "../../../../../img/catalog/Sedan.svg";
 import convertiable from "../../../../../img/catalog/convertiable.svg";
 import coupe from "../../../../../img/catalog/coupe.svg";
@@ -8,7 +9,7 @@ import hatchback from "../../../../../img/catalog/hatchback.svg";
 import suv from "../../../../../img/catalog/suv.svg";
 import trucks from "../../../../../img/catalog/truck.svg";
 import van from "../../../../../img/catalog/van.svg";
-import { SelectedFilterButton } from "../selectedFilterButton/SelectedFilterButton";
+import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
 export const bodyType = [
   {
     id: "trucks",
@@ -54,29 +55,24 @@ export const bodyType = [
   },
 ];
 
-export const BodyType = ({ cards, setCards }) => {
-  const [bodyTypeState, setbodyTypeState] = useState(bodyType);
-  const [originalCards, setOriginalCards] = useState(cards);
+export const BodyType = () => {
+  const [bodyTypeState, setBodyTypeState] = useState(bodyType);
+  const { setBodyTypeFilters } = useFilters();
 
   const handleCheckboxChange = (id) => {
     const updatedBodyType = bodyTypeState.map((bodyType) =>
       bodyType.id === id ? { ...bodyType, value: !bodyType.value } : bodyType
     );
-    setbodyTypeState(updatedBodyType);
+
+    setBodyTypeState(updatedBodyType);
 
     const selectedType = updatedBodyType
       .filter(({ value }) => value)
       .map(({ name }) => name);
 
-    if (selectedType.length === 0) {
-      setCards(originalCards);
-    } else {
-      const sortedCards = originalCards.filter((item) =>
-        selectedType.includes(item.bodyType)
-      );
-      setCards(sortedCards);
-    }
+    setBodyTypeFilters(selectedType);
   };
+
   return (
     <div className="type">
       <div className="type__body">

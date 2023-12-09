@@ -1,6 +1,6 @@
 import React from "react";
 import "./selectedFilter.scss";
-export const SelectedFilterButton = ({ name ,onClick }) => {
+export const SelectedFilterButton = ({ name, onClick }) => {
   return (
     <div className="selected-filter">
       <div className="selected-filter__body">

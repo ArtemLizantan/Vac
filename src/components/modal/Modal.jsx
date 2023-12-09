@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import BtnSolid from '../../UI/button/buttonSolid/BtnSolid';
+import BtnSolid from "../../UI/button/buttonSolid/BtnSolid";
 
-import './index.scss';
+import "./index.scss";
 
 const Modal = ({ state, onClick }) => {
   const [modalView, setModal] = useState(0);
 
   useEffect(() => {
     if (state) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [state]);
 
@@ -25,13 +25,13 @@ const Modal = ({ state, onClick }) => {
     setModal(0);
   };
 
-  const submitForm = e => {
+  const submitForm = (e) => {
     let count = 0;
     const obj = { ...e.target.parentNode.parentNode.elements };
 
     for (const key in obj) {
       if (Object.hasOwnProperty.call(obj, key)) {
-        if (obj[key].value != '') {
+        if (obj[key].value != "") {
           count++;
         }
       }
@@ -45,8 +45,14 @@ const Modal = ({ state, onClick }) => {
   };
 
   return (
-    <div className={`overlay ${state ? 'overlay_show' : ''}`}>
-      {modalView == 0 ? modal() : modalView == 1 ? contactUs() : modalView == 2 ? success() : ''}
+    <div className={`overlay ${state ? "overlay_show" : ""}`}>
+      {modalView == 0
+        ? modal()
+        : modalView == 1
+        ? contactUs()
+        : modalView == 2
+        ? success()
+        : ""}
     </div>
   );
 
@@ -54,7 +60,13 @@ const Modal = ({ state, onClick }) => {
     return (
       <div className="modal">
         <div className="close" onClick={onClick}>
-          <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="29"
+            height="29"
+            viewBox="0 0 29 29"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -71,7 +83,7 @@ const Modal = ({ state, onClick }) => {
             Contact us
           </div>
           <Link to="/about" className="modal__list-item" onClick={onClick}>
-            About VAC
+            About CM
           </Link>
           <Link to="/loan-rates" className="modal__list-item" onClick={onClick}>
             Loan Rates
@@ -88,7 +100,13 @@ const Modal = ({ state, onClick }) => {
         </div>
         <div className="modal__social">
           <a href="#" className="modal__link">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <rect width="30" height="30" rx="2" fill="#7481FF" />
               <path
                 d="M14.8573 10.6956C12.5992 10.6956 10.7283 12.5343 10.7283 14.8246C10.7283 17.1149 12.567 18.9536 14.8573 18.9536C17.1476 18.9536 18.9863 17.0827 18.9863 14.8246C18.9863 12.5665 17.1154 10.6956 14.8573 10.6956ZM14.8573 17.4697C13.4057 17.4697 12.2121 16.2762 12.2121 14.8246C12.2121 13.373 13.4057 12.1794 14.8573 12.1794C16.3089 12.1794 17.5025 13.373 17.5025 14.8246C17.5025 16.2762 16.3089 17.4697 14.8573 17.4697Z"
@@ -105,7 +123,13 @@ const Modal = ({ state, onClick }) => {
             </svg>
           </a>
           <a href="#" className="modal__link">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <rect width="30" height="30" rx="2" fill="#7481FF" />
               <path
                 d="M17.9557 22.4945V15.6079H20.2857L20.8683 12.7385H17.9557V11.5908C17.9557 10.443 18.5394 9.86915 19.7032 9.86915H20.8683V6.99976C20.2857 6.99976 19.5634 6.99976 18.5382 6.99976C16.3975 6.99976 15.0432 8.6531 15.0432 11.0169V12.7385H12.7131V15.6079H15.0432V22.4945H17.9557Z"
@@ -114,7 +138,13 @@ const Modal = ({ state, onClick }) => {
             </svg>
           </a>
           <a href="#" className="modal__link">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <rect width="30" height="30" rx="2" fill="#7481FF" />
               <path
                 d="M23.3845 11.2773C23.19 10.5543 22.62 9.98444 21.8972 9.78978C20.5767 9.42847 15.2945 9.42847 15.2945 9.42847C15.2945 9.42847 10.0125 9.42847 8.69196 9.77608C7.98304 9.97054 7.39915 10.5544 7.20469 11.2773C6.85718 12.5977 6.85718 15.336 6.85718 15.336C6.85718 15.336 6.85718 18.0882 7.20469 19.3948C7.39935 20.1177 7.96913 20.6876 8.69207 20.8822C10.0264 21.2436 15.2947 21.2436 15.2947 21.2436C15.2947 21.2436 20.5767 21.2436 21.8972 20.896C22.6201 20.7015 23.19 20.1316 23.3847 19.4087C23.7321 18.0882 23.7321 15.35 23.7321 15.35C23.7321 15.35 23.746 12.5977 23.3845 11.2773ZM13.6127 17.8659V12.8062L18.0051 15.336L13.6127 17.8659Z"
@@ -131,8 +161,20 @@ const Modal = ({ state, onClick }) => {
     return (
       <div className="contactUs">
         <div className="contactUs__close" onClick={closeContactUs}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" strokeLinejoin="round" />
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L23 23"
+              stroke="#41456B"
+              stroke-width="2"
+              stroke-linecap="round"
+              strokeLinejoin="round"
+            />
             <path
               d="M23 1L0.999999 23"
               stroke="#41456B"
@@ -144,19 +186,42 @@ const Modal = ({ state, onClick }) => {
         </div>
         <div className="contactUs__title">We can't wait to hear from you!</div>
         <form className="contactUs__form">
-          <input type="text" name="name" placeholder="Your Name" className="contactUs__input" />
-          <input type="tel" name="phone" placeholder="Phone Number" className="contactUs__input" />
-          <input type="email" name="email" placeholder="Email Address" className="contactUs__input" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            className="contactUs__input"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            className="contactUs__input"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            className="contactUs__input"
+          />
           <div className="contactUs__btn">
             <BtnSolid onClick={submitForm}>Contact Me</BtnSolid>
           </div>
         </form>
 
         <div className="contactUs__social">
-          <div className="contactUs__social-title">You can contact us yourself</div>
+          <div className="contactUs__social-title">
+            You can contact us yourself
+          </div>
           <div className="contactUs__social-list">
             <a href="#" className="contactUs__link">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <rect width="30" height="30" rx="2" fill="#7481FF" />
                 <path
                   d="M14.8573 10.6955C12.5992 10.6955 10.7283 12.5342 10.7283 14.8246C10.7283 17.1149 12.567 18.9536 14.8573 18.9536C17.1476 18.9536 18.9863 17.0826 18.9863 14.8246C18.9863 12.5665 17.1154 10.6955 14.8573 10.6955ZM14.8573 17.4697C13.4057 17.4697 12.2121 16.2762 12.2121 14.8246C12.2121 13.3729 13.4057 12.1794 14.8573 12.1794C16.3089 12.1794 17.5025 13.3729 17.5025 14.8246C17.5025 16.2762 16.3089 17.4697 14.8573 17.4697Z"
@@ -173,7 +238,13 @@ const Modal = ({ state, onClick }) => {
               </svg>
             </a>
             <a href="#" className="contactUs__link">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <rect width="30" height="30" rx="2" fill="#7481FF" />
                 <path
                   d="M17.9557 22.4946V15.608H20.2857L20.8683 12.7386H17.9557V11.5909C17.9557 10.4431 18.5394 9.86924 19.7032 9.86924H20.8683V6.99985C20.2857 6.99985 19.5634 6.99985 18.5382 6.99985C16.3975 6.99985 15.0432 8.65319 15.0432 11.017V12.7386H12.7131V15.608H15.0432V22.4946H17.9557Z"
@@ -182,7 +253,13 @@ const Modal = ({ state, onClick }) => {
               </svg>
             </a>
             <a href="#" className="contactUs__link">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <rect width="30" height="30" rx="2" fill="#7481FF" />
                 <path
                   d="M23.3845 11.2773C23.19 10.5544 22.62 9.98453 21.8972 9.78987C20.5767 9.42856 15.2945 9.42856 15.2945 9.42856C15.2945 9.42856 10.0125 9.42856 8.69196 9.77617C7.98304 9.97063 7.39915 10.5545 7.20469 11.2773C6.85718 12.5978 6.85718 15.3361 6.85718 15.3361C6.85718 15.3361 6.85718 18.0883 7.20469 19.3949C7.39935 20.1178 7.96913 20.6876 8.69207 20.8823C10.0264 21.2437 15.2947 21.2437 15.2947 21.2437C15.2947 21.2437 20.5767 21.2437 21.8972 20.8961C22.6201 20.7015 23.19 20.1317 23.3847 19.4088C23.7321 18.0883 23.7321 15.35 23.7321 15.35C23.7321 15.35 23.746 12.5978 23.3845 11.2773ZM13.6127 17.8659V12.8063L18.0051 15.3361L13.6127 17.8659Z"
@@ -191,7 +268,13 @@ const Modal = ({ state, onClick }) => {
               </svg>
             </a>
             <a href="#" className="contactUs__link">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <rect width="30" height="30" rx="2" fill="#7481FF" />
                 <path
                   d="M8 12.7143L14.4778 16.6803C14.7983 16.8765 15.2017 16.8765 15.5222 16.6803L22 12.7143M8 12.7143V21C8 21.5523 8.44772 22 9 22H21C21.5523 22 22 21.5523 22 21V12.7143M8 12.7143L14.4414 8.3762C14.7791 8.14878 15.2209 8.14878 15.5586 8.3762L22 12.7143"
@@ -212,8 +295,20 @@ const Modal = ({ state, onClick }) => {
     return (
       <div className="success">
         <div className="success__close" onClick={closeContactUs}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L23 23" stroke="#41456B" stroke-width="2" stroke-linecap="round" strokeLinejoin="round" />
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L23 23"
+              stroke="#41456B"
+              stroke-width="2"
+              stroke-linecap="round"
+              strokeLinejoin="round"
+            />
             <path
               d="M23 1L0.999999 23"
               stroke="#41456B"
@@ -224,8 +319,20 @@ const Modal = ({ state, onClick }) => {
           </svg>
         </div>
         <div className="success__icon">
-          <svg width="100%" height="100%" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="35" cy="35" r="33.5" stroke="#7481FF" stroke-width="3" />
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 70 70"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="35"
+              cy="35"
+              r="33.5"
+              stroke="#7481FF"
+              stroke-width="3"
+            />
             <path
               d="M21 37.2925L32.3077 47.6L50.4 21"
               stroke="#7481FF"
@@ -236,7 +343,9 @@ const Modal = ({ state, onClick }) => {
           </svg>
         </div>
         <div className="success__title">Application Successful!</div>
-        <div className="success__subtitle">Our manager will contact you in the nearest time.</div>
+        <div className="success__subtitle">
+          Our manager will contact you in the nearest time.
+        </div>
       </div>
     );
   }
