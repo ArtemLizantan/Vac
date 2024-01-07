@@ -13,7 +13,7 @@ export const RenderFilters = () => {
   const mainFilters = [
     {
       id: "makeModel",
-      name: "Make, Model",
+      name: "Name, Model",
       child: {
         key: "makeModel",
         content: <Make />,

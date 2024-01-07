@@ -9,10 +9,11 @@ export const FilterProvider = ({ children }) => {
   const [kilometresFilters, setKilometresFilters] = useState([]);
   const [search, setSearch] = useState([]);
   const [yearFilter, setYearFilter] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState(["lowest"]);
   const [filteredPriority, setFilteredPriority] = useState([]);
   const [makeFiltered, setMakeFiltered] = useState([]);
   const [modelFiltered, setModelFiltered] = useState([]);
+  const [clearFilter, setClearFilter] = useState(false);
   useEffect(() => {
     setProducts(inventory);
   }, []);
@@ -28,14 +29,9 @@ export const FilterProvider = ({ children }) => {
         (!bodyTypeFilters.length || bodyTypeFilters.includes(item.bodyType)) &&
         (!priceFilters.length ||
           (item.price >= minPrice && item.price <= maxPrice)) &&
-        (!kilometresFilters.length || item.kilometres < kilometresFilters) &&
+        (!kilometresFilters.length || item.kilometres <= kilometresFilters) &&
         (!yearFilter.length ||
           (item.year >= minYear && item.year <= maxYear)) &&
-        (filteredPriority === "newest" ||
-          filteredPriority === "lowest" ||
-          filteredPriority === "highest" ||
-          filteredPriority === "recommendations" ||
-          !filteredPriority) &&
         (!search.length ||
           item.name.toLowerCase().includes(search.toLowerCase())) &&
         (!makeFiltered.length || item.name.includes(makeFiltered)) &&
@@ -66,6 +62,19 @@ export const FilterProvider = ({ children }) => {
     modelFiltered,
   ]);
 
+  const clearAllFilters = () => {
+    setTransmissionFilter([]);
+    setBodyTypeFilters([]);
+    setPriceFilters([]);
+    setKilometresFilters([]);
+    setSearch([]);
+    setYearFilter([]);
+    setFilteredPriority([]);
+    setMakeFiltered([]);
+    setModelFiltered([]);
+    setClearFilter(true);
+  };
+
   const contextValue = {
     transmissionFilter,
     setTransmissionFilter,
@@ -89,6 +98,9 @@ export const FilterProvider = ({ children }) => {
     modelFiltered,
     setModelFiltered,
     filteredProducts,
+    clearFilter,
+    setClearFilter,
+    clearAllFilters,
   };
 
   console.log(contextValue);

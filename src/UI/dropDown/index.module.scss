@@ -27,6 +27,23 @@
   overflow: hidden;
   transition: all 0.4s;
   padding: 0px 20px;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgb(215, 215, 215);
+  }
+
+  &::before {
+    left: -1px;
+  }
+
+  &::after {
+    right: -1px;
+  }
   &.active {
     max-height: 500px;
     opacity: 1;

@@ -18,6 +18,7 @@ const DropDown = ({
   borderBottom,
 }) => {
   const [active, setActive] = useState(false);
+
   const handleTitleClick = () => {
     onClick && setActive((prev) => !prev);
   };
@@ -33,6 +34,7 @@ const DropDown = ({
             height="10"
             viewBox="0 0 18 10"
             fill="none"
+            style={{ transform: active ? "rotateX(180deg)" : "rotateX(0deg)" }}
           >
             <path
               d="M17 1L9 9L1 1"

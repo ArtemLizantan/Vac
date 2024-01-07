@@ -4,11 +4,15 @@ import React, { useState } from "react";
 import { useFilters } from "../../../../../context/FilterContenxt";
 export const Kilometres = () => {
   const [value, setValue] = useState([0]);
-  const { setKilometresFilters } = useFilters();
+  const { setKilometresFilters, products, setFilteredProducts } = useFilters();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setKilometresFilters(newValue);
+
+    if (newValue[0] === 0) {
+      setKilometresFilters("");
+    }
   };
 
   const kmValue = (value) => {
@@ -16,7 +20,11 @@ export const Kilometres = () => {
   };
 
   return (
-    <Box sx={{ width: 260 }}>
+    <Box
+      sx={{
+        width: "100%",
+      }}
+    >
       <div className="price__counts">
         <span>{kmValue(value[0])}</span>
       </div>
@@ -30,7 +38,7 @@ export const Kilometres = () => {
         step={10000}
         sx={{
           color: "#7481FF",
-          "&.MuiSlider-rail": {
+          "& .MuiSlider-rail": {
             color: "#D7D7D7",
           },
           "& .MuiSlider-thumb": {

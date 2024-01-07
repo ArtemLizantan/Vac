@@ -90,11 +90,6 @@ const Video = () => {
               />
             </Masonry>
           </ResponsiveMasonry>
-          <div className={styles.loader}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
         </div>
       </div>
       <div

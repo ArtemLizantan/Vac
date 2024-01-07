@@ -28,7 +28,7 @@ export const SearchMake = ({ data }) => {
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
   const [make, setMake] = useState([]);
-  const { setMakeFiltered } = useFilters();
+  const { setMakeFiltered, search, setSearch } = useFilters();
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -44,13 +44,21 @@ export const SearchMake = ({ data }) => {
   const handleItemButtonClick = (value) => {
     setMakeFiltered(value);
     setMake(value);
-    console.log(value);
+    setSearch(value)
   };
 
   const handleDeleteSelect = () => {
     setMakeFiltered("");
     setMake([]);
+    setSearch("")
   };
+
+  const uniqueNames = [...new Set(carList.map((car) => car.name))];
+
+  useEffect(() => {
+    setMakeFiltered(search);
+    setMake(search);
+  }, [search]);
 
   return (
     <>
@@ -63,14 +71,13 @@ export const SearchMake = ({ data }) => {
             onChange={(e) => setSearchItem(e.target.value)}
             onFocus={handleFocus}
             autoComplete="off"
-            // onBlur={handleBlur}
           />
 
           {activeFilterCars && (
             <div className="filter__search-popup filter__search-popup--infilter">
               <ul className="filter__search-list">
-                {carList.map(({ name, id }) => (
-                  <li key={id}>
+                {uniqueNames.map((name) => (
+                  <li key={name}>
                     <button
                       onClick={() => {
                         handleItemButtonClick(name);

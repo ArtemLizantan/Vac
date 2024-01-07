@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useFilters } from "../../../../context/FilterContenxt";
 const filterCarsSearch = (searchText, listOfCars) => {
   if (!searchText) {
@@ -26,7 +26,8 @@ export const FilterSearch = ({ data }) => {
   const [carList, setCarList] = useState(data);
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
-  const { filteredProducts, setSearch } = useFilters();
+  const { filteredProducts, setSearch, makeFiltered, setModelFiltered } =
+    useFilters();
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleItemButtonClick = (value) => {
@@ -44,8 +45,23 @@ export const FilterSearch = ({ data }) => {
     return () => clearTimeout(debounce);
   }, [searchItem, data, setSearch]);
 
-  const handleFocus = () => setActiveFilterCars(true);
-  const handleBlur = () => setActiveFilterCars(false);
+  const popupRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setActiveFilterCars(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const uniqueNames = [...new Set(carList.map((car) => car.name))];
 
   return (
     <form className="filter__search">
@@ -53,11 +69,10 @@ export const FilterSearch = ({ data }) => {
         <input
           type="text"
           placeholder={"Find a dream car..."}
-          value={searchItem}
+          value={makeFiltered.length === 0 ? searchItem : makeFiltered}
           className="filter__input"
           onChange={(e) => setSearchItem(e.target.value)}
-          onFocus={handleFocus}
-          // onBlur={handleBlur}
+          onClick={() => setActiveFilterCars(!activeFilterCars)}
         />
         <button className="filter__search-btn">
           <svg
@@ -77,23 +92,25 @@ export const FilterSearch = ({ data }) => {
         </button>
 
         {activeFilterCars && (
-          <div className="filter__search-popup">
+          <div ref={popupRef} className="filter__search-popup">
             <ul className="filter__search-list">
               {!filteredProducts.length ? (
                 <div className="filter__search-nothing">Nothing found</div>
               ) : null}
-              {carList.map(({ name, id }) => (
-                <li key={id}>
-                  <button
-                    onClick={() => {
-                      handleItemButtonClick(name);
-                      handleBlur();
-                    }}
-                  >
-                    {name}
-                  </button>
-                </li>
-              ))}
+              {uniqueNames.map((name, id) => {
+                return (
+                  <li key={id}>
+                    <button
+                      onClick={() => {
+                        handleItemButtonClick(name);
+                        setActiveFilterCars(false);
+                      }}
+                    >
+                      {name}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}

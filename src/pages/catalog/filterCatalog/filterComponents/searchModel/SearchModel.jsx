@@ -28,7 +28,8 @@ export const SearchModel = ({ data }) => {
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
   const [model, setModel] = useState([]);
-  const { setModelFiltered, makeFiltered, filteredProducts } = useFilters();
+  const { setModelFiltered, makeFiltered, filteredProducts, setMakeFiltered } =
+    useFilters();
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -47,8 +48,8 @@ export const SearchModel = ({ data }) => {
   };
 
   const handleDeleteSelect = () => {
-    setModelFiltered("");
-    setModel([]);
+    setModelFiltered("")
+    setModel([])
   };
 
   return (
@@ -62,7 +63,6 @@ export const SearchModel = ({ data }) => {
             onChange={(e) => setSearchItem(e.target.value)}
             onFocus={handleFocus}
             autoComplete="off"
-            // onBlur={handleBlur}
           />
 
           {activeFilterCars && (

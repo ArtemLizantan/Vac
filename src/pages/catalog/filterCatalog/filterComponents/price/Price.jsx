@@ -15,7 +15,7 @@ export const Price = () => {
   };
 
   return (
-    <Box sx={{ width: 260 }}>
+    <Box sx={{ width: "100%"}}>
       <div className="price__counts">
         <span>{dollarValue(value[0])}</span>
         <span>{dollarValue(value[1])}</span>

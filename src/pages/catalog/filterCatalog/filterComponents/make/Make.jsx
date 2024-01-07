@@ -6,7 +6,7 @@ export const Make = () => {
   return (
     <div className="make">
       <div className="make__wrapper">
-        <h2 className="make__title">Make</h2>
+        <h2 className="make__title">Name</h2>
         <SearchMake placeholder={"Search Make..."} data={inventory} />
       </div>
       <div className="make__wrapper">

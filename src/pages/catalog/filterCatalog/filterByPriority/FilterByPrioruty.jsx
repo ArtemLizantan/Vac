@@ -22,6 +22,8 @@ export const FilterByPriority = () => {
     setFilteredPriority(id);
   };
 
+  
+
   return (
     <div className="filter__top-right">
       <span>Sorted by </span>
@@ -33,8 +35,6 @@ export const FilterByPriority = () => {
         widthPopup={"100%"}
         left={"0px"}
         borderBottom={"1px solid #d7d7d7"}
-        borderRight={"1px solid #d7d7d7"}
-        borderLeft={"1px solid #d7d7d7"}
         onClick
       >
         <ul className="recommendations__list">

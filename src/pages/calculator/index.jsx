@@ -7,7 +7,7 @@ const CalculatorPage = () => {
   return (
     <>
       <Helmet>
-        <title>Calculator - VAC</title>
+        <title>Calculator - VAC1</title>
       </Helmet>
       <Heading title={'Use our free calculator!'} />
       <Calculator mtX={40} mtS={31} />

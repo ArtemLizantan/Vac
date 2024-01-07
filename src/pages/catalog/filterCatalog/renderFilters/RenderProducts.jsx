@@ -38,7 +38,7 @@ export const RenderProducts = () => {
     >
       {chunkedProducts.map((group, groupIndex) => (
         <SwiperSlide key={groupIndex}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
+          <div  className="all-products">
             {group.map(
               ({
                 name,

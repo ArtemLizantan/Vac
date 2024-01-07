@@ -4,6 +4,9 @@
     display: flex;
     align-items: baseline;
     gap: 40px;
+    @media (max-width: 1360px) {
+      flex-direction: column;
+    }
   }
   &__wrapper {
     display: flex;
@@ -12,16 +15,27 @@
     width: 100%;
     position: relative;
     max-width: 860px;
+    @media (max-width: 1360px) {
+      max-width: unset;
+    }
   }
   &__top {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    @media(max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
   }
   &__search {
     display: flex;
     align-items: center;
     gap: 20px;
+    @media(max-width: 800px) {
+      justify-content: center;
+    }
   }
   &__top-left {
     width: 100%;
@@ -70,19 +84,19 @@
       letter-spacing: 0.32px;
       white-space: nowrap;
     }
+    @media(max-width: 800px) {
+      justify-content: center;
+    }
   }
   &__products {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  
   }
   &__search-nothing {
     color: #41456b;
     font-family: Gilroy;
     font-size: 16px;
     font-weight: 600;
-    line-height: 14.364px; 
+    line-height: 14.364px;
   }
   &__search-popup {
     background-color: #fff;
@@ -110,6 +124,26 @@
     gap: 10px;
     max-height: 155px;
     overflow-y: auto;
+    /* Стили для полосы прокрутки */
+    &::-webkit-scrollbar {
+      width: 10px;
+      padding-right: 10px;
+    }
+
+    /* Стили для "бегунка" прокрутки */
+    &::-webkit-scrollbar-thumb {
+      background-color: #d7d7d7; /* Цвет бегунка */
+      border-radius: 5px; /* Скругление углов бегунка */
+      width: 6px;
+      height: 15px;
+    }
+
+    /* Стили для трека прокрутки (фона) */
+    &::-webkit-scrollbar-track {
+      width: 4px;
+      height: 114px;
+      background: #f3f3f3;
+    }
     li {
       button {
         width: 100%;
@@ -132,6 +166,9 @@
   gap: 31px;
   max-width: 300px;
   width: 100%;
+  @media (max-width: 1360px) {
+    max-width: unset;
+  }
   &__top {
     display: flex;
     align-items: center;
@@ -160,7 +197,8 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+
     li {
       button {
         border: none;
@@ -183,4 +221,15 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
+}
+
+
+.all-products{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: unset;
+  @media(max-width: 1368px) {
+    justify-content: center;
+  }
 }
