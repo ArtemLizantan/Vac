@@ -65,7 +65,7 @@ export const RenderFilters = () => {
     <>
       {mainFilters.map(({ id, name, child: { content } }) => {
         return (
-          <DropDown title={name} id={id} key={id}>
+          <DropDown  title={name} id={id} key={id}>
             <DropDownFilterItems content={content} />
           </DropDown>
         );

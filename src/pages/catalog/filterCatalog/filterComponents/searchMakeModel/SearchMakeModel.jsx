@@ -28,7 +28,7 @@ export const SearchMake = ({ data }) => {
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
   const [make, setMake] = useState([]);
-  const { setMakeFiltered, search, setSearch } = useFilters();
+  const { setMakeFiltered, setModelFiltered, clearFilter } = useFilters();
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -44,21 +44,16 @@ export const SearchMake = ({ data }) => {
   const handleItemButtonClick = (value) => {
     setMakeFiltered(value);
     setMake(value);
-    setSearch(value)
+    console.log(value);
   };
 
   const handleDeleteSelect = () => {
     setMakeFiltered("");
     setMake([]);
-    setSearch("")
+    setModelFiltered("");
   };
 
   const uniqueNames = [...new Set(carList.map((car) => car.name))];
-
-  useEffect(() => {
-    setMakeFiltered(search);
-    setMake(search);
-  }, [search]);
 
   return (
     <>
@@ -76,8 +71,8 @@ export const SearchMake = ({ data }) => {
           {activeFilterCars && (
             <div className="filter__search-popup filter__search-popup--infilter">
               <ul className="filter__search-list">
-                {uniqueNames.map((name) => (
-                  <li key={name}>
+                {uniqueNames.map((name, id) => (
+                  <li key={id}>
                     <button
                       onClick={() => {
                         handleItemButtonClick(name);
@@ -93,7 +88,8 @@ export const SearchMake = ({ data }) => {
           )}
         </div>
       </form>
-      {make.length === 0 ? null : (
+
+      {clearFilter === false && make.length !== 0 && (
         <ul style={{ marginTop: "0" }} className="selected-filters">
           <li>
             <SelectedFilterButton

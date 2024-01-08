@@ -26,8 +26,7 @@ export const FilterSearch = ({ data }) => {
   const [carList, setCarList] = useState(data);
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
-  const { filteredProducts, setSearch, makeFiltered, setModelFiltered } =
-    useFilters();
+  const { filteredProducts, setSearch } = useFilters();
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleItemButtonClick = (value) => {
@@ -44,6 +43,9 @@ export const FilterSearch = ({ data }) => {
     }, 300);
     return () => clearTimeout(debounce);
   }, [searchItem, data, setSearch]);
+
+  const handleFocus = () => setActiveFilterCars(true);
+  const handleBlur = () => setActiveFilterCars(false);  
 
   const popupRef = useRef(null);
 
@@ -69,10 +71,10 @@ export const FilterSearch = ({ data }) => {
         <input
           type="text"
           placeholder={"Find a dream car..."}
-          value={makeFiltered.length === 0 ? searchItem : makeFiltered}
+          value={searchItem}
           className="filter__input"
           onChange={(e) => setSearchItem(e.target.value)}
-          onClick={() => setActiveFilterCars(!activeFilterCars)}
+          onFocus={handleFocus}
         />
         <button className="filter__search-btn">
           <svg
@@ -97,20 +99,18 @@ export const FilterSearch = ({ data }) => {
               {!filteredProducts.length ? (
                 <div className="filter__search-nothing">Nothing found</div>
               ) : null}
-              {uniqueNames.map((name, id) => {
-                return (
-                  <li key={id}>
-                    <button
-                      onClick={() => {
-                        handleItemButtonClick(name);
-                        setActiveFilterCars(false);
-                      }}
-                    >
-                      {name}
-                    </button>
-                  </li>
-                );
-              })}
+              {uniqueNames.map((name, id) => (
+                <li key={id}>
+                  <button
+                    onClick={() => {
+                      handleItemButtonClick(name);
+                      handleBlur();
+                    }}
+                  >
+                    {name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         )}

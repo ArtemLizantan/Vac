@@ -28,8 +28,13 @@ export const SearchModel = ({ data }) => {
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
   const [model, setModel] = useState([]);
-  const { setModelFiltered, makeFiltered, filteredProducts, setMakeFiltered } =
-    useFilters();
+  const {
+    setModelFiltered,
+    makeFiltered,
+    filteredProducts,
+    setMakeFiltered,
+    modelFiltered,
+  } = useFilters();
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -48,9 +53,14 @@ export const SearchModel = ({ data }) => {
   };
 
   const handleDeleteSelect = () => {
-    setModelFiltered("")
-    setModel([])
+    setModelFiltered("");
+    setModel([]);
+    console.log(modelFiltered);
   };
+
+  useEffect(() => {
+    modelFiltered.length === 0 ? setModel("") : null;
+  }, [modelFiltered]);
 
   return (
     <>
@@ -68,7 +78,8 @@ export const SearchModel = ({ data }) => {
           {activeFilterCars && (
             <div className="filter__search-popup filter__search-popup--infilter">
               <ul className="filter__search-list">
-                {makeFiltered.length === 0
+                {filteredProducts.length === 0 && "There are no models with these parameters"}
+                {makeFiltered.length === 0 && filteredProducts.length != 0
                   ? "Select the car name"
                   : filteredProducts.map(({ model, id }) => (
                       <li key={id}>

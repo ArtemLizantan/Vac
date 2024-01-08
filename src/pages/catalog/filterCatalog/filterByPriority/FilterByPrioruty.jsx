@@ -22,7 +22,7 @@ export const FilterByPriority = () => {
     setFilteredPriority(id);
   };
 
-  
+
 
   return (
     <div className="filter__top-right">

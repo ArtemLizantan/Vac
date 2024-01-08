@@ -57,7 +57,7 @@ export const bodyType = [
 
 export const BodyType = () => {
   const [bodyTypeState, setBodyTypeState] = useState(bodyType);
-  const { setBodyTypeFilters } = useFilters();
+  const { setBodyTypeFilters, clearFilter } = useFilters();
 
   const handleCheckboxChange = (id) => {
     const updatedBodyType = bodyTypeState.map((bodyType) =>
@@ -96,18 +96,20 @@ export const BodyType = () => {
             </li>
           ))}
         </ul>
-        <ul className="selected-filters">
-          {bodyTypeState.map(({ name, value, id }) =>
-            value ? (
-              <li key={`selected-filter-${id}`}>
-                <SelectedFilterButton
-                  onClick={() => handleCheckboxChange(id)}
-                  name={name}
-                />
-              </li>
-            ) : null
-          )}
-        </ul>
+        {clearFilter === false && (
+          <ul className="selected-filters">
+            {bodyTypeState.map(({ name, value, id }) =>
+              value ? (
+                <li key={`selected-filter-${id}`}>
+                  <SelectedFilterButton
+                    onClick={() => handleCheckboxChange(id)}
+                    name={name}
+                  />
+                </li>
+              ) : null
+            )}
+          </ul>
+        )}
       </div>
     </div>
   );

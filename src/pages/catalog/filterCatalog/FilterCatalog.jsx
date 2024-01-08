@@ -8,7 +8,7 @@ import { RenderFilters } from "./renderFilters/RenderFilters";
 import { RenderProducts } from "./renderFilters/RenderProducts";
 export const FilterCatalog = () => {
   const [cards, setCards] = useState(inventory);
-  const { clearAllFilters } = useFilters();
+
   return (
     <div className="filter">
       <div className="container">
