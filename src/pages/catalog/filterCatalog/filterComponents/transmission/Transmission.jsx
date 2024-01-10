@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Checkbox from "react-custom-checkbox";
 import { FiCheck } from "react-icons/fi";
 import { useFilters } from "../../../../../context/FilterContenxt";
 import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
+
 export const transmission = [
   {
     id: "automatic",
@@ -19,6 +20,19 @@ export const transmission = [
 export const Transmission = () => {
   const [transmissionsState, setTransmissionsState] = useState(transmission);
   const { setTransmissionFilter, clearFilter } = useFilters();
+
+  useEffect(() => {
+    if (clearFilter) {
+      // Если clearFilter равно true, сбрасываем значения чекбоксов на false
+      setTransmissionsState((prevTransmissionsState) =>
+        prevTransmissionsState.map((transmission) => ({
+          ...transmission,
+          value: false,
+        }))
+      );
+      setTransmissionFilter([]); // Сбрасываем выбранные фильтры
+    }
+  }, [clearFilter, setTransmissionFilter]);
 
   const handleCheckboxChange = (name) => {
     const updatedTransmissions = transmissionsState.map((transmission) =>

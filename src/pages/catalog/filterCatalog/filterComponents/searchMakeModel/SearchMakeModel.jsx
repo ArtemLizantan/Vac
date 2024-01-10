@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFilters } from "../../../../../context/FilterContenxt";
 import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
+
 const filterCarsSearch = (searchText, listOfCars) => {
   if (!searchText) {
     return listOfCars;
@@ -38,13 +39,22 @@ export const SearchMake = ({ data }) => {
     return () => clearTimeout(debounce);
   }, [searchItem, data]);
 
+  useEffect(() => {
+    if (clearFilter) {
+      setSearchItem("");
+      setCarList(data);
+      setMakeFiltered("");
+      setMake([]);
+      setModelFiltered("");
+    }
+  }, [clearFilter, data, setMakeFiltered, setModelFiltered]);
+
   const handleFocus = () => setActiveFilterCars(true);
   const handleBlur = () => setActiveFilterCars(false);
 
   const handleItemButtonClick = (value) => {
     setMakeFiltered(value);
     setMake(value);
-    console.log(value);
   };
 
   const handleDeleteSelect = () => {

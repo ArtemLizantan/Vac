@@ -1,14 +1,21 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useFilters } from "../../../../../context/FilterContenxt";
 export const Year = () => {
-  const [value, setValue] = useState([2000, 2023]);
-  const { setYearFilter } = useFilters();
+  const initialRange = [2000, 2023];
+  const [value, setValue] = useState(initialRange);
+  const { setYearFilter,clearFilter } = useFilters();
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setYearFilter(newValue);
   };
+
+  useEffect(() => {
+    if (clearFilter) {
+      setValue(initialRange);
+    }
+  }, [clearFilter, initialRange, setYearFilter]);
 
   return (
     <Box sx={{ width: "100%"}}>

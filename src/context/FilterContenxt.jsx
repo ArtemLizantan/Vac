@@ -9,14 +9,21 @@ export const FilterProvider = ({ children }) => {
   const [kilometresFilters, setKilometresFilters] = useState([]);
   const [search, setSearch] = useState([]);
   const [yearFilter, setYearFilter] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState(["lowest"]);
-  const [filteredPriority, setFilteredPriority] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredPriority, setFilteredPriority] = useState("newest");
   const [makeFiltered, setMakeFiltered] = useState([]);
   const [modelFiltered, setModelFiltered] = useState([]);
   const [clearFilter, setClearFilter] = useState(false);
   useEffect(() => {
     setProducts(inventory);
+    setFilteredProducts(inventory)
   }, []);
+
+  useEffect(() => {
+    if(filteredProducts.length === products.length){
+      setClearFilter(false)
+    }
+  },[filteredProducts])
 
   const [minPrice, maxPrice] = priceFilters;
   const [minYear, maxYear] = yearFilter;
@@ -37,18 +44,18 @@ export const FilterProvider = ({ children }) => {
         (!makeFiltered.length || item.name.includes(makeFiltered)) &&
         (!modelFiltered.length || item.model.includes(modelFiltered))
     );
-
+  
     const sortedProducts =
       filteredPriority === "lowest"
-        ? filteredProducts.sort((a, b) => a.price - b.price)
+        ? filteredProducts.slice().sort((a, b) => a.price - b.price)
         : filteredPriority === "highest"
-        ? filteredProducts.sort((a, b) => b.price - a.price)
+        ? filteredProducts.slice().sort((a, b) => b.price - a.price)
         : filteredPriority === "recommendations"
-        ? filteredProducts.sort((a, b) => a.kilometres - b.kilometres)
+        ? filteredProducts.slice().sort((a, b) => a.kilometres - b.kilometres)
         : filteredPriority === "newest"
-        ? filteredProducts.sort((a, b) => b.year - a.year)
-        : filteredProducts;
-
+        ? filteredProducts.slice().sort((a, b) => b.year - a.year)
+        : filteredProducts.slice();
+  
     setFilteredProducts(sortedProducts);
   }, [
     bodyTypeFilters,
@@ -56,11 +63,14 @@ export const FilterProvider = ({ children }) => {
     priceFilters,
     kilometresFilters,
     yearFilter,
-    filteredPriority,
     search,
     makeFiltered,
     modelFiltered,
+    filteredPriority,
+    products,  
   ]);
+  
+  
 
   const clearAllFilters = () => {
     setTransmissionFilter([]);

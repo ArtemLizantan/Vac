@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { inventory } from "../../../data/inventory";
 import { useFilters } from "../../../context/FilterContenxt";
 import { FilterByPriority } from "./filterByPriority/FilterByPrioruty";
@@ -7,8 +7,7 @@ import "./index.scss";
 import { RenderFilters } from "./renderFilters/RenderFilters";
 import { RenderProducts } from "./renderFilters/RenderProducts";
 export const FilterCatalog = () => {
-  const [cards, setCards] = useState(inventory);
-
+  const { products } = useFilters();
   return (
     <div className="filter">
       <div className="container">
@@ -17,9 +16,7 @@ export const FilterCatalog = () => {
             <div className="filter-sidebar__top">
               <h3 className="filter-sidebar__title">Detailed search</h3>
             </div>
-            <ul className="filter-sidebar__list">
-              <RenderFilters />
-            </ul>
+            <ul className="filter-sidebar__list"><RenderFilters /></ul>
           </div>
           <div className="filter__wrapper">
             <div className="filter__top">
@@ -28,7 +25,7 @@ export const FilterCatalog = () => {
                   placeholder={"Find a dream car..."}
                   share
                   width={350}
-                  data={cards}
+                  data={products}
                 />
               </div>
               <FilterByPriority />

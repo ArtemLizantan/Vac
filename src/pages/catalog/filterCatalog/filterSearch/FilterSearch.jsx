@@ -45,7 +45,7 @@ export const FilterSearch = ({ data }) => {
   }, [searchItem, data, setSearch]);
 
   const handleFocus = () => setActiveFilterCars(true);
-  const handleBlur = () => setActiveFilterCars(false);  
+  const handleBlur = () => setActiveFilterCars(false);
 
   const popupRef = useRef(null);
 
@@ -98,19 +98,20 @@ export const FilterSearch = ({ data }) => {
             <ul className="filter__search-list">
               {!filteredProducts.length ? (
                 <div className="filter__search-nothing">Nothing found</div>
-              ) : null}
-              {uniqueNames.map((name, id) => (
-                <li key={id}>
-                  <button
-                    onClick={() => {
-                      handleItemButtonClick(name);
-                      handleBlur();
-                    }}
-                  >
-                    {name}
-                  </button>
-                </li>
-              ))}
+              ) : (
+                uniqueNames.map((name, id) => (
+                  <li key={id}>
+                    <button
+                      onClick={() => {
+                        handleItemButtonClick(name);
+                        handleBlur();
+                      }}
+                    >
+                      {name}
+                    </button>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         )}

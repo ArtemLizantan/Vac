@@ -1,19 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./singleProduct.scss";
 import { inventory } from "../../data/inventory.js";
 import { useParams } from "react-router-dom";
 import LinkSolid from "../../UI/links/linkSolid/LinkSolid.jsx";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 export const SingleProduct = () => {
   const { idCar } = useParams();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const selectedProduct = inventory.find((product) => product.id === idCar);
-  console.log(selectedProduct);
+
   return (
     <div className="single-product" key={selectedProduct.id}>
       <div className="container">
@@ -36,36 +36,11 @@ export const SingleProduct = () => {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2 single-product__myswiper2"
               >
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src={selectedProduct.img} />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide>
+                {selectedProduct.images.map((img, id) => (
+                  <SwiperSlide key={id}>
+                    <img className="single-product__swiper-img" src={img} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
               <Swiper
                 onSwiper={setThumbsSwiper}
@@ -76,36 +51,11 @@ export const SingleProduct = () => {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper single-product__myswiper"
               >
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img className="single-product__swiper-img"  src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img  className="single-product__swiper-img" src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img className="single-product__swiper-img"  src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img className="single-product__swiper-img"  src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img className="single-product__swiper-img"  src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img className="single-product__swiper-img"  src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide>
+                {selectedProduct.images.map((img, id) => (
+                  <SwiperSlide key={id}>
+                    <img className="single-product__swiper-img" src={img} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             <div className="single-product__right single-right">

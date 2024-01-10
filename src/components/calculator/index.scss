@@ -288,8 +288,7 @@
     @media (max-width: 767px) {
       font-size: 20px;
     }
-
-    &_big {
+     &_big {
       color: var(--primary---accent);
 
       font-size: 45px;
@@ -297,6 +296,9 @@
 
       @media (max-width: 767px) {
         font-size: 35px;
+      }
+      @media(max-width: 567px) {
+        font-size: 23px;
       }
     }
   }

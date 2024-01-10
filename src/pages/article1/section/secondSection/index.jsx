@@ -14,7 +14,7 @@ const SecondSection = () => {
               d="M13.9995 20L5.99951 12L13.9995 4"
               stroke="#606276"
               strokeWidth="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
@@ -27,7 +27,7 @@ const SecondSection = () => {
                 d="M14 20L6 12L14 4"
                 stroke="#606276"
                 strokeWidth="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
@@ -39,7 +39,7 @@ const SecondSection = () => {
                   d="M13.9995 20L5.99951 12L13.9995 4"
                   stroke="#606276"
                   strokeWidth="2"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Checkbox from "react-custom-checkbox";
 import { FiCheck } from "react-icons/fi";
 import { useFilters } from "../../../../../context/FilterContenxt";
@@ -10,6 +10,7 @@ import suv from "../../../../../img/catalog/suv.svg";
 import trucks from "../../../../../img/catalog/truck.svg";
 import van from "../../../../../img/catalog/van.svg";
 import { SelectedFilterButton } from "./../selectedFilterButton/SelectedFilterButton";
+
 export const bodyType = [
   {
     id: "trucks",
@@ -58,6 +59,19 @@ export const bodyType = [
 export const BodyType = () => {
   const [bodyTypeState, setBodyTypeState] = useState(bodyType);
   const { setBodyTypeFilters, clearFilter } = useFilters();
+
+  useEffect(() => {
+    if (clearFilter) {
+      // Если clearFilter равно true, сбрасываем значения чекбоксов на false
+      setBodyTypeState((prevBodyTypeState) =>
+        prevBodyTypeState.map((bodyType) => ({
+          ...bodyType,
+          value: false,
+        }))
+      );
+      setBodyTypeFilters([]); // Сбрасываем выбранные фильтры
+    }
+  }, [clearFilter, setBodyTypeFilters]);
 
   const handleCheckboxChange = (id) => {
     const updatedBodyType = bodyTypeState.map((bodyType) =>

@@ -37,8 +37,6 @@ const Modal = ({ state, onClick }) => {
       }
     }
 
-    console.log(obj, count);
-
     if (count == 6) {
       setModal(2);
     }
@@ -172,7 +170,7 @@ const Modal = ({ state, onClick }) => {
               d="M1 1L23 23"
               stroke="#41456B"
               strokeWidth="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
@@ -306,7 +304,7 @@ const Modal = ({ state, onClick }) => {
               d="M1 1L23 23"
               stroke="#41456B"
               strokeWidth="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
@@ -326,13 +324,7 @@ const Modal = ({ state, onClick }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle
-              cx="35"
-              cy="35"
-              r="33.5"
-              stroke="#7481FF"
-              strokeWidth="3"
-            />
+            <circle cx="35" cy="35" r="33.5" stroke="#7481FF" strokeWidth="3" />
             <path
               d="M21 37.2925L32.3077 47.6L50.4 21"
               stroke="#7481FF"

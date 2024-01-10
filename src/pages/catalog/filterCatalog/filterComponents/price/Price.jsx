@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { useFilters } from "../../../../../context/FilterContenxt";
 export const Price = () => {
-  const [value, setValue] = useState([0, 200000]);
-  const { setPriceFilters } = useFilters();
+  const initialRange = [0, 200000];
+  const [value, setValue] = useState(initialRange);
+  const { setPriceFilters ,clearFilter} = useFilters();
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setPriceFilters(newValue);
@@ -13,6 +14,12 @@ export const Price = () => {
   const dollarValue = (value) => {
     return `$${value.toLocaleString()}`;
   };
+
+  useEffect(() => {
+    if (clearFilter) {
+      setValue(initialRange);
+    }
+  }, [clearFilter, initialRange, setPriceFilters]);
 
   return (
     <Box sx={{ width: "100%"}}>
