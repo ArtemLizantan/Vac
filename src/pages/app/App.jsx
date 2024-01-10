@@ -4,23 +4,24 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 const MainPage = lazy(() => import("../main"));
 
-import About from "./../about/index";
-import Article1 from "./../article1/index";
-import Blog from "./../blog/index";
-import CalculatorPage from "./../calculator/index";
-import { Catalog } from "./../catalog/Catalog";
-import Privacy from "./../privacy/index";
-import Terms from "./../terms/index";
-import Video from "./../video/index";
+const About = lazy(() => import("./../about/index"));
+const Article1 = lazy(() => import("./../article1/index"));
+const Blog = lazy(() => import("./../blog/index"));
+const CalculatorPage = lazy(() => import("./../calculator/index"));
+const Catalog = lazy(() => import("./../catalog/Catalog"));
+const Privacy = lazy(() => import("./../privacy/index"));
+const Terms = lazy(() => import("./../terms/index"));
+const Video = lazy(() => import("./../video/index"));
+const SinglePageProduct = lazy(() => import("../singleProduct"));
 import "./index.scss";
 
 const App = () => {
   return (
     <>
-      <Suspense>
-        <div className="wrapper">
-          <Header />
-          <main className="main">
+      <div className="wrapper">
+        <Header />
+        <main className="main">
+          <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route exact path="/">
                 <MainPage />
@@ -49,11 +50,14 @@ const App = () => {
               <Route exact path="/about">
                 <About />
               </Route>
+              <Route exact path="/products/:idCar">
+                <SinglePageProduct />
+              </Route>
             </Switch>
-          </main>
-          <Footer />
-        </div>
-      </Suspense>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };

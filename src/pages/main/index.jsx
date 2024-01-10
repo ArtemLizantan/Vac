@@ -25,7 +25,7 @@ const MainPage = () => {
       <Customers />
       <ClientSay />
       <SeventhSection />
-      <Calculator mtX={220} mtM={159} mtS={80} />
+      <Calculator mtX={220} mtM={159} mtS={80} title={"Let’s figure out how much you can afford"}/>
       <EightSection />
     </>
   );

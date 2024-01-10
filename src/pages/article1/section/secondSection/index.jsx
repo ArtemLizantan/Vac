@@ -13,9 +13,9 @@ const SecondSection = () => {
             <path
               d="M13.9995 20L5.99951 12L13.9995 4"
               stroke="#606276"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
           </svg>
           Back
@@ -26,9 +26,9 @@ const SecondSection = () => {
               <path
                 d="M14 20L6 12L14 4"
                 stroke="#606276"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
             </svg>
           </Link>
@@ -38,9 +38,9 @@ const SecondSection = () => {
                 <path
                   d="M13.9995 20L5.99951 12L13.9995 4"
                   stroke="#606276"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               Back

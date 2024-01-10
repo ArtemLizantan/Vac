@@ -171,7 +171,7 @@ const Modal = ({ state, onClick }) => {
             <path
               d="M1 1L23 23"
               stroke="#41456B"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
               strokeLinejoin="round"
             />
@@ -305,7 +305,7 @@ const Modal = ({ state, onClick }) => {
             <path
               d="M1 1L23 23"
               stroke="#41456B"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
               strokeLinejoin="round"
             />
@@ -331,7 +331,7 @@ const Modal = ({ state, onClick }) => {
               cy="35"
               r="33.5"
               stroke="#7481FF"
-              stroke-width="3"
+              strokeWidth="3"
             />
             <path
               d="M21 37.2925L32.3077 47.6L50.4 21"

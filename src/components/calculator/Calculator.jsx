@@ -4,7 +4,7 @@ import LinkSolid from '../../UI/links/linkSolid/LinkSolid';
 
 import './index.scss';
 
-const Calculator = ({ mtX, mtM, mtS }) => {
+const Calculator = ({ mtX, mtM, mtS ,title}) => {
   const [multiplier, setMultiplier] = useState(1);
   const [amount, setAmount] = useState(10000);
   const [duration, setDuration] = useState(1);
@@ -37,7 +37,7 @@ const Calculator = ({ mtX, mtM, mtS }) => {
     >
       <div className="container">
         <div className="calculator__header">
-          <div className="calculator__title">Let’s figure out how much you can afford</div>
+          <div className="calculator__title">{title}</div>
           <div className="calculator__subtitle">
             Before you start shopping, let’s figure out how much you can afford. Move the sliders to see how the loan
             duration and the total loan amount affect your monthly payments.

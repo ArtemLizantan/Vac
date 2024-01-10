@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { FilterProvider } from "../../context/FilterContenxt";
 import { FilterCatalog } from "./filterCatalog/FilterCatalog";
-export const Catalog = () => {
+const Catalog = () => {
   return (
     <>
       <Helmet>
@@ -14,3 +14,4 @@ export const Catalog = () => {
     </>
   );
 };
+export default Catalog;

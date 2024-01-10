@@ -41,23 +41,23 @@ export const RenderProducts = () => {
             <path
               d="M76.8447 9H83.7921"
               stroke="#41456B"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <path
               d="M76.8447 15H88.8447"
               stroke="#41456B"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <path
               d="M76.8447 21H80.6342"
               stroke="#41456B"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
@@ -98,6 +98,7 @@ export const RenderProducts = () => {
               }) => (
                 <FilterProducts
                   key={id}
+                  id={id}
                   name={name}
                   model={model}
                   type={bodyType}

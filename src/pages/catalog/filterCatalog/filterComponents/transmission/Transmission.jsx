@@ -18,7 +18,7 @@ export const transmission = [
 
 export const Transmission = () => {
   const [transmissionsState, setTransmissionsState] = useState(transmission);
-  const { products, setProducts, setTransmissionFilter } = useFilters();
+  const { setTransmissionFilter, clearFilter } = useFilters();
 
   const handleCheckboxChange = (name) => {
     const updatedTransmissions = transmissionsState.map((transmission) =>
@@ -57,18 +57,20 @@ export const Transmission = () => {
             </li>
           ))}
         </ul>
-        <ul className="selected-filters">
-          {transmissionsState.map(({ name, value, id }) =>
-            value ? (
-              <li key={`selected-filter-${id}`}>
-                <SelectedFilterButton
-                  onClick={() => handleCheckboxChange(name)}
-                  name={name}
-                />
-              </li>
-            ) : null
-          )}
-        </ul>
+        {clearFilter === false && (
+          <ul className="selected-filters">
+            {transmissionsState.map(({ name, value, id }) =>
+              value ? (
+                <li key={`selected-filter-${id}`}>
+                  <SelectedFilterButton
+                    onClick={() => handleCheckboxChange(name)}
+                    name={name}
+                  />
+                </li>
+              ) : null
+            )}
+          </ul>
+        )}
       </div>
     </div>
   );
