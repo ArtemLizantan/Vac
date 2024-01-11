@@ -1,6 +1,5 @@
 import React from "react";
 import DropDown from "../../../../UI/dropDown/DropDown";
-import { DropDownFilterItems } from "../../../../UI/dropDown/dropDownFilterItems/dropDownFilterItems";
 import { Price } from "../filterComponents/price/Price";
 import { BodyType } from "./../filterComponents/bodyType/BodyType";
 import { Kilometres } from "./../filterComponents/kilometres/Kilometres";
@@ -65,8 +64,8 @@ export const RenderFilters = () => {
     <>
       {mainFilters.map(({ id, name, child: { content } }) => {
         return (
-          <DropDown  title={name} id={id} key={id}>
-            <DropDownFilterItems content={content} />
+          <DropDown title={name} id={id} key={id}>
+            {content}
           </DropDown>
         );
       })}

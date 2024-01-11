@@ -1,12 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import './index.scss';
+import "./index.scss";
 
 const Article = ({ to, img, title }) => {
   return (
-    <Link to={to} className="article">
+    <Link
+      data-aos-once="true"
+      data-aos-duration="800"
+      data-aos="fade-up"
+      to={to}
+      className="article"
+    >
       <div className="article__img">
         <img src={img} alt="img" loading="lazy" />
       </div>

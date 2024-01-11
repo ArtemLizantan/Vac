@@ -20,17 +20,37 @@ const EightSection = () => {
     <div className={styles.section}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.title}>Interesting to read</div>
-          <div className={styles.btn}>
-            <LinkLiner to={"/blog"} wx={180} ws={"auto"}>
-              All articles
-            </LinkLiner>
+          <div className={styles.top}>
+            <div
+              data-aos-once="true"
+              data-aos-duration="1000"
+              data-aos="zoom-out-right"
+              data-aos-anchor-placement="center-center"
+              className={styles.title}
+            >
+              Interesting to read
+            </div>
+            <div
+              data-aos-once="true"
+              data-aos-duration="1000"
+              data-aos="zoom-out-left"
+              data-aos-anchor-placement="center-center"
+              className={styles.btn}
+            >
+              <LinkLiner to={"/blog"} wx={180} ws={"auto"}>
+                All articles
+              </LinkLiner>
+            </div>
           </div>
 
           <Swiper
+            data-aos-once="true"
+            data-aos-duration="1000"
+            data-aos="zoom-out"
+            data-aos-anchor-placement="top-center"
             className={styles.slider + " eightSlider"}
-            slidesPerView={"auto"}
             spaceBetween={20}
+            slidesPerView={"auto"}
             modules={[Navigation]}
             navigation
             autoHeight
@@ -46,7 +66,7 @@ const EightSection = () => {
             </SwiperSlide>
             <SwiperSlide className={styles.slide}>
               <Article
-                to={'/blog'}
+                to={"/blog"}
                 img={article2}
                 title={"How fast can you order a car in Canada?"}
               />
@@ -55,6 +75,24 @@ const EightSection = () => {
               <Article
                 to={"/blog"}
                 img={article3}
+                title={
+                  "How to save on buying a car?Why is it better to buy from us"
+                }
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <Article
+                to={"/blog"}
+                img={article1}
+                title={
+                  "How to save on buying a car?Why is it better to buy from us"
+                }
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <Article
+                to={"/blog"}
+                img={article1}
                 title={
                   "How to save on buying a car?Why is it better to buy from us"
                 }

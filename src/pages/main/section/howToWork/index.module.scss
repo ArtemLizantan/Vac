@@ -93,14 +93,7 @@
   transition: all 0.2s;
 
   @media (max-width: 1024px) {
-    width: 404px;
-    top: 179px;
-    right: -157px;
+    display: none;
   }
 
-  @media (max-width: 640px) {
-    width: 259px;
-    top: 270px;
-    right: -79px;
-  }
 }

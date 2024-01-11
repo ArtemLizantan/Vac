@@ -26,7 +26,7 @@ export const FilterSearch = ({ data }) => {
   const [carList, setCarList] = useState(data);
   const [searchItem, setSearchItem] = useState("");
   const [activeFilterCars, setActiveFilterCars] = useState(false);
-  const { filteredProducts, setSearch } = useFilters();
+  const { filteredProducts, setSearch ,clearFilter } = useFilters();
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleItemButtonClick = (value) => {
@@ -43,6 +43,12 @@ export const FilterSearch = ({ data }) => {
     }, 300);
     return () => clearTimeout(debounce);
   }, [searchItem, data, setSearch]);
+
+  useEffect(() => {
+    if (clearFilter) {
+      setSearchItem(""); // Очищаем значение поиска при clearFilter === true
+    }
+  }, [clearFilter, setSearchItem]);
 
   const handleFocus = () => setActiveFilterCars(true);
   const handleBlur = () => setActiveFilterCars(false);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useFilters } from "../../../../context/FilterContenxt";
 import { FilterProducts } from "../filterProducts/FilterProducts";
@@ -20,6 +20,31 @@ export const RenderProducts = () => {
   };
 
   const chunkedProducts = chunkArray(filteredProducts, 6);
+
+  let scrollTimeout;
+
+  const handleSlideChange = () => {
+    // Очищаем предыдущий таймаут, если есть
+    clearTimeout(scrollTimeout);
+
+    // Устанавливаем новый таймаут
+    scrollTimeout = setTimeout(() => {
+      const targetElement = document.querySelector(".filter__top-right");
+
+      // Если элемент найден, прокрутите к нему
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200); // Задержка в миллисекундах (в данном случае 200 мс)
+  };
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    // Вызываем update, чтобы обновить Swiper при изменении контента
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.update();
+    }
+  }, [filteredProducts]);
 
   return filteredProducts.length === 0 ? (
     <div className="error">
@@ -74,9 +99,12 @@ export const RenderProducts = () => {
     </div>
   ) : (
     <Swiper
+      ref={swiperRef}
       style={{ paddingBottom: "65px", width: "100%" }}
       slidesPerView={1}
       autoHeight={true}
+      observer={true}
+      observeParents={true}
       grid={{
         rows: 1,
       }}
@@ -85,6 +113,7 @@ export const RenderProducts = () => {
         clickable: true,
       }}
       modules={[Grid, Pagination]}
+      onSlideChange={handleSlideChange}
       className="mySwiper"
     >
       {chunkedProducts.map((group, groupIndex) => (

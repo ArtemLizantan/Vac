@@ -9,7 +9,10 @@ const FifthSection = () => {
     <div className={styles.section}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.card}>
+          <div   data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-right"
+            data-aos-anchor-placement="top-center" className={styles.card}>
             <div className={styles.cardTitle}>
               Contact us today and speak with one of our qualified agents
             </div>
@@ -17,7 +20,10 @@ const FifthSection = () => {
               <BtnSolid wx={200}>contact us now</BtnSolid>
             </div>
           </div>
-          <div className={styles.text}>
+          <div   data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-left"
+            data-aos-anchor-placement="top-center" className={styles.text}>
             <div className={styles.title}>Our qualified agents</div>
             <div className={styles.subtitle}>
               The true secret to success of CM isn’t our streamlined purchasing

@@ -1,9 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 const MainPage = lazy(() => import("../main"));
-
 const About = lazy(() => import("./../about/index"));
 const Article1 = lazy(() => import("./../article1/index"));
 const Blog = lazy(() => import("./../blog/index"));
@@ -13,15 +15,26 @@ const Privacy = lazy(() => import("./../privacy/index"));
 const Terms = lazy(() => import("./../terms/index"));
 const Video = lazy(() => import("./../video/index"));
 const SinglePageProduct = lazy(() => import("../singleProduct"));
-import "./index.scss";
+const Quiz = lazy(() => import("../quiz"));
+const Loan = lazy(() => import("../loan"));
+const Page404 = lazy(() => import("../404"));
 
+import ScrollToTop from "../../components/scrollToTop/ScrollToTop";
+import Spinner from "../../components/spinner/Spinner";
+
+import "./index.scss";
 const App = () => {
+  const [footer, setFooter] = useState(false);
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <div className="wrapper">
         <Header />
         <main className="main">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div><Spinner /></div>}>
+          <ScrollToTop />
             <Switch>
               <Route exact path="/">
                 <MainPage />
@@ -52,6 +65,15 @@ const App = () => {
               </Route>
               <Route exact path="/products/:idCar">
                 <SinglePageProduct />
+              </Route>
+              <Route path="/quiz">
+                <Quiz setFooter={setFooter} />
+              </Route>
+              <Route path="/loan-rates">
+                <Loan />
+              </Route>
+              <Route path="*">
+                <Page404 />
               </Route>
             </Switch>
           </Suspense>

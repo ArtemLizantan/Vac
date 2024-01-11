@@ -1,14 +1,11 @@
 .link {
   width: var(--width);
   height: 45px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 2px;
   background: var(--primary---white);
-
   font-size: 16px;
   font-weight: 700;
   line-height: 14.364px; /* 89.775% */
@@ -16,6 +13,11 @@
   text-transform: uppercase;
   color: var(--primary---accent);
   cursor: pointer;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.05);
+  }
+
   @media (max-width: 768px) {
     width: var(--widthM);
   }

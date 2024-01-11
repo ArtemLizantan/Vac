@@ -14,16 +14,17 @@ export const FilterProvider = ({ children }) => {
   const [makeFiltered, setMakeFiltered] = useState([]);
   const [modelFiltered, setModelFiltered] = useState([]);
   const [clearFilter, setClearFilter] = useState(false);
+
   useEffect(() => {
     setProducts(inventory);
-    setFilteredProducts(inventory)
+    setFilteredProducts(inventory);
   }, []);
 
   useEffect(() => {
-    if(filteredProducts.length === products.length){
-      setClearFilter(false)
+    if (filteredProducts.length === products.length) {
+      setClearFilter(false);
     }
-  },[filteredProducts])
+  }, [filteredProducts]);
 
   const [minPrice, maxPrice] = priceFilters;
   const [minYear, maxYear] = yearFilter;
@@ -44,7 +45,7 @@ export const FilterProvider = ({ children }) => {
         (!makeFiltered.length || item.name.includes(makeFiltered)) &&
         (!modelFiltered.length || item.model.includes(modelFiltered))
     );
-  
+
     const sortedProducts =
       filteredPriority === "lowest"
         ? filteredProducts.slice().sort((a, b) => a.price - b.price)
@@ -55,7 +56,7 @@ export const FilterProvider = ({ children }) => {
         : filteredPriority === "newest"
         ? filteredProducts.slice().sort((a, b) => b.year - a.year)
         : filteredProducts.slice();
-  
+
     setFilteredProducts(sortedProducts);
   }, [
     bodyTypeFilters,
@@ -67,10 +68,8 @@ export const FilterProvider = ({ children }) => {
     makeFiltered,
     modelFiltered,
     filteredPriority,
-    products,  
+    products,
   ]);
-  
-  
 
   const clearAllFilters = () => {
     setTransmissionFilter([]);

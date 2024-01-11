@@ -9,7 +9,13 @@ const SecondSection = () => {
     <div className={styles.section}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.text}>
+          <div
+            data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-right"
+            data-aos-anchor-placement="top-center"
+            className={styles.text}
+          >
             <div className={styles.title}>Get your dream car</div>
             <div className={styles.subtitle}>
               We founded CM because we hated how complicated it was to buy a

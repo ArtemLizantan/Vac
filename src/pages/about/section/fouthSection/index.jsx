@@ -10,23 +10,47 @@ const FouthSeection = () => {
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.container}>
-            <div className={styles.title}>
+            <div
+              data-aos-once="true"
+              data-aos-duration="800"
+              data-aos="zoom-out-right"
+              data-aos-anchor-placement="top-center"
+              className={styles.title}
+            >
               Get a car at the best prices and conditions
             </div>
-            <div className={styles.text}>
+            <div
+              data-aos-once="true"
+              data-aos-duration="800"
+              data-aos="zoom-out-right"
+              // data-aos-anchor-placement="top-center"
+              className={styles.text}
+            >
               Not only is buying a car with CM easy, it’s also the best way to
               save money. We have partnerships with Canada’s largest lenders.
               That allows us to help you secure loans at the best interest rates
               available.
             </div>
-            <div className={styles.text}>
+            <div
+              data-aos-once="true"
+              data-aos-duration="800"
+              data-aos="zoom-out-right"
+              // data-aos-anchor-placement="top-top"
+              className={styles.text}
+            >
               Because convenience and transparency are our founding principles,
               we take the time to answer all of your questions about the vehicle
               and the auto loan. We will send you pictures and videos of any
               part of the car you like before you request a test drive.
             </div>
           </div>
-          <div className={styles.container}>
+          <div
+            data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-left"
+            data-aos-anchor-placement="top-center"
+            className={styles.container}
+          >
             <div className={styles.subtitle}>
               We think that CM is the best way to buy a car in Canada. Try it
               for yourself and see how much time and money you can save.

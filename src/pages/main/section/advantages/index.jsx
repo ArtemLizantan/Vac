@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import styles from './index.module.scss';
+import styles from "./index.module.scss";
 
-import triangleDown from '../../img/triangleDown.svg';
-import triangleUp from '../../img/triangleUp.svg';
+import triangleDown from "../../img/triangleDown.svg";
+import triangleUp from "../../img/triangleUp.svg";
 
 const Adnwantages = () => {
   const [screen, setScreen] = useState(0);
@@ -12,20 +12,40 @@ const Adnwantages = () => {
     setScreen(window.innerWidth);
   }, []);
 
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     setScreen(window.innerWidth);
   });
 
   return (
     <div className={styles.section}>
       <div className="container">
-        <div className={styles.title}>Advantages of working with us</div>
-        <div className={styles.wrapper}>
+        <div
+          data-aos-once="true"
+          data-aos-duration="800"
+          data-aos="zoom-out"
+          data-aos-anchor-placement="top-center"
+          className={styles.title}
+        >
+          Advantages of working with us
+        </div>
+        <div
+          data-aos-once="true"
+          data-aos-duration="800"
+          data-aos="zoom-out-right"
+          data-aos-anchor-placement="top-center"
+          className={styles.wrapper}
+        >
           <div className={styles.item}>
             <div className={styles.imgUp}>
               <img src={triangleUp} alt="triangle" />
             </div>
-            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -35,15 +55,25 @@ const Adnwantages = () => {
             </svg>
             <div className={styles.deliveryTitle}>Vehicle Delivery</div>
             <div className={styles.deliverySubtitle}>
-              We deliver your vehicle directly to your door. You don’t sign anything until you test drive the vehicle.
-              There is never any obligation to buy beforehand.
+              We deliver your vehicle directly to your door. You don’t sign
+              anything until you test drive the vehicle. There is never any
+              obligation to buy beforehand.
             </div>
           </div>
           <div className={styles.item}>
             <div className={styles.imgUp}>
-              <img src={screen < 1187 ? triangleUp : triangleDown} alt="triangle" />
+              <img
+                src={screen < 1187 ? triangleUp : triangleDown}
+                alt="triangle"
+              />
             </div>
-            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -54,15 +84,22 @@ const Adnwantages = () => {
 
             <div className={styles.deliveryTitle}>Auto Financing</div>
             <div className={styles.deliverySubtitle}>
-              We partner with the largest lenders in Canada to offer the strongest financing options in the
-              industry—including rates as low as 4%
+              We partner with the largest lenders in Canada to offer the
+              strongest financing options in the industry—including rates as low
+              as 4%
             </div>
           </div>
           <div className={styles.item}>
             <div className={styles.imgUp}>
               <img src={triangleUp} alt="triangle" />
             </div>
-            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -73,8 +110,8 @@ const Adnwantages = () => {
 
             <div className={styles.deliveryTitle}>Huge Inventory</div>
             <div className={styles.deliverySubtitle}>
-              We have access to thousands of high-quality vehicles and offer them to you at wholesale prices. Your dream
-              car is waiting for you
+              We have access to thousands of high-quality vehicles and offer
+              them to you at wholesale prices. Your dream car is waiting for you
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  padding: 0 10px;
   border-radius: 2px;
   border: 1px solid var(--primary---accent);
 
@@ -20,8 +20,9 @@
   cursor: pointer;
 
   &:hover {
-    border-color: var(--hover---primary);
-    color: var(--hover---primary);
+   background-color: var(--primary---accent);
+    color: #fff;
+
   }
   @media (max-width: 768px) {
     width: var(--widthM);

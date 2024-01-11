@@ -125,6 +125,9 @@
     flex-direction: column;
     gap: 40px;
     padding: 0 30px;
+    @media(max-width: 567px) {
+      padding: 0;
+    }
   }
   &__detail-columns{
     @media(max-width: 567px) {
@@ -185,6 +188,7 @@
     max-width: 160px;
     @media(max-width: 567px) {
       font-size: 18px;
+      max-width: unset;
     }
   }
   &__desc-text {

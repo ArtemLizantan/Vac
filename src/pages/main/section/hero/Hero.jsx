@@ -23,16 +23,29 @@ const Hero = () => {
     <div className={styles.section}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.title}>
+          <div
+            data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-right"
+            className={styles.title}
+          >
             The easiest way to buy a car in Canada
           </div>
-          <div className={styles.btn}>
+          <div
+            data-aos-once="true"
+            data-aos-duration="1000"
+            data-aos="zoom-out-right"
+            className={styles.btn}
+          >
             <LinkSolidWhite to={"/quiz"} wx={200} ws={214}>
               Request a {cars[slide]}
             </LinkSolidWhite>
           </div>
 
           <Swiper
+            data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-left"
             slidesPerView={"auto"}
             centeredSlides
             spaceBetween={60}

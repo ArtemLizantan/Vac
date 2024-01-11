@@ -8,7 +8,6 @@ const DropDown = ({
   id,
   gap,
   position,
-  onClick,
   top,
   left,
   borderLeft,

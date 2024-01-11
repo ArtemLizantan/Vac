@@ -1,10 +1,9 @@
 import React from "react";
-
 import LinkSolid from "../../../../UI/links/linkSolid/LinkSolid";
 
 import styles from "./index.module.scss";
 
-import kia from "../../img/Kia.png";
+import chevrole from "../../img/Chevrolet.png";
 
 const FirstSection = () => {
   return (
@@ -17,14 +16,13 @@ const FirstSection = () => {
             data-aos="zoom-out-right"
             className={styles.card}
           >
-            <div className={styles.carTitle}>Our mission</div>
-            <div className={styles.cardSubtitle}>
-              Our mission at CM is to help you find the perfect car at the
-              perfect price and with the perfect auto loan. We make buying a car
-              simple. You can complete the entire process from home—we’ll even
-              deliver the car to you!
+            <div className={styles.title}>Our credit policy</div>
+            <div className={styles.subtitle}>
+              You want to secure a loan that works for your budget. Here at VAC
+              we work with Canada’s largest lenders to help you find the best
+              interest rates and terms for your auto loan.
             </div>
-            <div className={styles.cardBtn}>
+            <div className={styles.btn}>
               <LinkSolid to={"/quiz"} wx={200} ws={"auto"}>
                 request a car
               </LinkSolid>
@@ -36,7 +34,7 @@ const FirstSection = () => {
             data-aos="zoom-out-left"
             className={styles.img}
           >
-            <img src={kia} alt="kia" loading="lazy" />
+            <img src={chevrole} alt="chevrole" loading="lazy" />
           </div>
         </div>
       </div>

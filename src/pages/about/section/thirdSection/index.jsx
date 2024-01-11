@@ -9,10 +9,19 @@ const ThirdSection = () => {
     <div className={styles.section}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.img}>
+          <div
+            data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-right"
+            data-aos-anchor-placement="top-center"
+            className={styles.img}
+          >
             <img src={nissan} alt="nissan" loading="lazy" />
           </div>
-          <div className={styles.text}>
+          <div   data-aos-once="true"
+            data-aos-duration="800"
+            data-aos="zoom-out-left"
+            data-aos-anchor-placement="top-center" className={styles.text}>
             <div className={styles.title}>
               CM is convenience and transparency
             </div>

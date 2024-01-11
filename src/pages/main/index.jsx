@@ -24,7 +24,7 @@ const MainPage = () => {
       <Adnwantages />
       <Customers />
       <ClientSay />
-      <SeventhSection />
+      {/* <SeventhSection /> */}
       <Calculator mtX={220} mtM={159} mtS={80} title={"Let’s figure out how much you can afford"}/>
       <EightSection />
     </>
